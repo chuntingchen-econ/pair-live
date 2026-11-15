@@ -3,7 +3,7 @@
 </style></head><body>
 <h1>🎲 Pair Live</h1>
 <div id="joinbox" class="card"><h2>參加實驗</h2><label for="joincode">請輸入實驗者給你的代碼</label><input id="joincode" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="12" placeholder="例如 4821"><div class="controls" style="margin-top:12px"><button id="joinBtn" class="main">加入</button></div></div>
-<div id="setup" class="card hide"><h2>實驗者：建立實驗</h2><label for="states">狀態集合 S</label><input id="states" value="ABC" maxlength="6"><label for="seconds">每回合秒數</label><input id="seconds" type="number" value="30" min="1" max="300"><details id="qbank" class="qbank"><summary>題目庫（點開查看所有題目）</summary><div id="qbanklist"></div></details><input type="radio" name="qmode" value="pairs" checked hidden><div id="qpickbox" class="hide"><label id="qpicklabel">題目（勾選要用的題目）</label><div id="qpick" class="qpick"></div><p id="qpicknote" class="muted"></p></div><div id="poolopts" class="hide"><label>題目池：兩人的題目</label><div class="modes"><label><input type="radio" name="poolsame" value="diff" checked>各自抽（兩人可能不同題）</label><label><input type="radio" name="poolsame" value="same">抽一題兩人共用（兩人一定同題）</label><label><input type="checkbox" id="tellsame" disabled>告訴受試者「對手的題目和你相同」（只能搭配「兩人共用」；不勾的話，受試者看到的畫面和「各自抽」完全一樣）</label></div></div><div id="pairsbox"><label for="savedsets">已存的題組</label><select id="savedsets"><option value="">（選一個題組，自動填入下面）</option></select><label for="qpairs">題組（每一組是一個回合的題目：Player 1／Player 2）</label><input id="qpairs" autocomplete="off" placeholder="例如 5/6, 5/7, 5/6|7, 20/21x"><p class="muted">每一組代表一個回合的設定。每一對受試者會把題組<b>隨機排序</b>後依序玩，每一對的順序各自抽。斜線左邊是 Player 1、右邊是 Player 2；寫 5 或 5/5 代表兩人同題。用 | 列出候選題目，該回合從中等機率抽一題，例如 5/6|7 是 Player 1 做 Q5、Player 2 從 Q6、Q7 抽一題。在一組後面加 x（例如 20/21x 或 20/21 x），這個回合兩人都看不到真實狀態和私有資訊。加 m、a 或 r，這個回合的對手是電腦：m＝鏡像、a＝反鏡像、r＝隨機（例如 10/15xm, 10/15xa, 10/15xr）；題組裡只要有一組標了 m／a／r，整場都是和電腦配對。</p><label for="rounds">總回合數</label><input id="rounds" type="number" value="4" min="1" max="100"><p id="roundnote" class="muted"></p><div class="modes"><label><input type="checkbox" id="showopp1" checked>告訴 Player 1：對手（Player 2）本回合可能的題目</label><label><input type="checkbox" id="showopp2" checked>告訴 Player 2：對手（Player 1）本回合可能的題目</label></div><p class="muted">勾了之後，受試者會看到「對手本回合的題目」卡片：對手只有一個候選時，他就知道對手的題目；有多個候選時，看到「是下列其中之一」。不勾的話，受試者只看到自己的題目。</p></div><p class="muted">每回合重新抽取真實狀態和兩人的資訊。</p><div class="modes"><label><input type="checkbox" id="hideinfo">整場都不顯示真實狀態和私有資訊（給 Q10–Q18、Q20–Q23、Q43–Q46 這類與真實狀態無關的題目用；受試者只看到 A、B、C… 按鈕和題目）。只有部分回合不顯示時，改在題組裡那一組後面加 x</label></div>
+<div id="setup" class="card hide"><h2>實驗者：建立實驗</h2><label for="states">狀態集合 S</label><input id="states" value="ABC" maxlength="6"><label for="seconds">每回合秒數</label><input id="seconds" type="number" value="30" min="1" max="300"><details id="qbank" class="qbank"><summary>題目庫（點開查看所有題目）</summary><div id="qbanklist"></div></details><input type="radio" name="qmode" value="pairs" checked hidden><div id="qpickbox" class="hide"><label id="qpicklabel">題目（勾選要用的題目）</label><div id="qpick" class="qpick"></div><p id="qpicknote" class="muted"></p></div><div id="poolopts" class="hide"><label>題目池：兩人的題目</label><div class="modes"><label><input type="radio" name="poolsame" value="diff" checked>各自抽（兩人可能不同題）</label><label><input type="radio" name="poolsame" value="same">抽一題兩人共用（兩人一定同題）</label><label><input type="checkbox" id="tellsame" disabled>告訴受試者「對手的題目和你相同」（只能搭配「兩人共用」；不勾的話，受試者看到的畫面和「各自抽」完全一樣）</label></div></div><div id="pairsbox"><label for="savedsets">已存的題組</label><select id="savedsets"><option value="">（選一個題組，自動填入下面）</option></select><label for="qpairs">題組（每一組是一個回合的題目：Player 1／Player 2）</label><input id="qpairs" autocomplete="off" placeholder="例如 5/6, 5/7, 5/6|7, 20/21x"><p class="muted">每一組代表一個回合的設定。每一對受試者會把題組<b>隨機排序</b>後依序玩，每一對的順序各自抽。斜線左邊是 Player 1、右邊是 Player 2；寫 5 或 5/5 代表兩人同題。用 | 列出候選題目，該回合從中等機率抽一題，例如 5/6|7 是 Player 1 做 Q5、Player 2 從 Q6、Q7 抽一題。在一組後面加 x（例如 20/21x 或 20/21 x），這個回合兩人都看不到真實狀態和私有資訊。加 m、a 或 r，這個回合的對手是電腦：m＝鏡像、a＝反鏡像、r＝隨機（例如 10/15xm, 10/15xa, 10/15xr）；題組裡只要有一組標了 m／a／r，整場都是和電腦配對。</p><label for="rounds">總回合數</label><input id="rounds" type="number" value="4" min="1" max="100"><p id="roundnote" class="muted"></p><div class="modes"><label><input type="checkbox" id="showopp1" checked>告訴 Player 1：對手（Player 2）本回合可能的題目</label><label><input type="checkbox" id="showopp2" checked>告訴 Player 2：對手（Player 1）本回合可能的題目</label></div><p class="muted">勾了之後，受試者會看到「對手本回合的題目」卡片：對手只有一個候選時，他就知道對手的題目；有多個候選時，看到「是下列其中之一」。不勾的話，受試者只看到自己的題目。</p></div><p class="muted">每回合重新抽取真實狀態和兩人的資訊。</p><div class="modes"><label><input type="checkbox" id="hideinfo">整場都不顯示真實狀態和私有資訊（給 Q10–Q18、Q20–Q25、Q43–Q46 這類與真實狀態無關的題目用；受試者只看到 A、B、C… 按鈕和題目）。只有部分回合不顯示時，改在題組裡那一組後面加 x</label></div>
 <label>對手</label><div class="modes"><label><input type="radio" name="botmode" value="" checked>另一位參與者（依到達順序兩兩配對）</label><label><input type="radio" name="botmode" value="mirror">電腦：鏡像（參與者選什麼，電腦就選一樣的）</label><label><input type="radio" name="botmode" value="anti">電腦：反鏡像（電腦隨機選一個和參與者不同的狀態）</label><label><input type="radio" name="botmode" value="random">電腦：隨機（電腦不看參與者，從所有狀態中隨機選，可能剛好一樣）</label></div><p class="muted">選電腦時，每位參與者一進來就和電腦配對（參與者是 Player 1、電腦是 Player 2），不用等人。電腦一直是 Ready；每回合開始後 0.3–1 秒電腦先隨機選一格；之後參與者每點一次，電腦在 0.3–1 秒後跟著選。參與者畫面和真人對手時一樣，不會顯示對手是電腦。只能用在自動配對場次。題組裡標了 m／a／r 的組照標示；沒標示的組照這裡的選擇。</p>
 <label for="newcode">加入代碼（3–12 個英文或數字；留空會自動產生 4 位數）</label><input id="newcode" autocomplete="off" maxlength="12" placeholder="留空自動產生">
 <div class="controls" style="margin-top:12px"><button id="createSession" class="main">建立自動配對場次</button><button id="create">建立單一雙人遊戲（手動）</button></div>
@@ -67,6 +67,8 @@ const questions={
 21:['Q21：不同選你得分（不提對手）','每一秒結束時，若你和對手目前選擇不同，你得 1 分；否則你得 0 分。'],
 22:['Q22：不同選雙方得分','每一秒結束時，若你和對手目前選擇不同，你得 1 分，對手得 1 分；否則雙方都得 0 分。'],
 23:['Q23：不同選雙方扣分','每一秒結束時，若你和對手目前選擇不同，你被扣 1 分，對手被扣 1 分；否則雙方都得 0 分。'],
+24:['Q24：不同選你得、對手扣','每一秒結束時，若你和對手目前選擇不同，你得 1 分，對手被扣 1 分；否則雙方都得 0 分。'],
+25:['Q25：不同選你扣、對手得','每一秒結束時，若你和對手目前選擇不同，你被扣 1 分，對手得 1 分；否則雙方都得 0 分。'],
 35:['Q35：你選對，對手得分','每一秒結束時，若你目前選擇真實狀態，對手得 1 分；否則對手得 0 分。'],
 36:['Q36：你選錯，對手得分','每一秒結束時，若你目前選擇非真實狀態，對手得 1 分；否則對手得 0 分。'],
 37:['Q37：你選對，對手扣分','每一秒結束時，若你目前選擇真實狀態，對手被扣 1 分；否則對手得 0 分。'],
@@ -93,7 +95,7 @@ el('qpairs').addEventListener('input',()=>{msg('');roundNote();if(el('savedsets'
 const savedSets=[
  ['題組 1','5/5, 6/6, 7/7, 8/8, 5/20, 6/20, 20/5, 20/6, 5|6/20, 20/5|6, 20|21/20x, 20/20|21x, 10/15|16x, 15|16/10x, 10/13|18x, 13|18/10x'],
  ['題組 2','1/1, 2/2, 3/3, 50/5|6, 5|6/50, 5/5, 6/6, 7/7, 8/8'],
- ['題組 3','10/15|16x, 15|16/10x, 10/13|14x, 13|14/10x, 10/45|46x, 45|46/10x, 10/43|44x, 43|44/10x']];
+ ['題組 3','10/15|16x, 15|16/10x, 10/13|14x, 13|14/10x, 10/45|46x, 45|46/10x, 10/43|44x, 43|44/10x, 10/24|25x, 24|25/10x']];
 el('savedsets').append(...savedSets.map(([name,t])=>{const o=document.createElement('option');o.value=t;o.textContent=`${name}（${parseSpec(t).length} 組）：${t}`;return o}));
 el('savedsets').addEventListener('change',()=>{const t=el('savedsets').value;if(!t)return;el('qpairs').value=t;roundsTouched=false;msg('');roundNote();});
 el('rounds').addEventListener('input',()=>{roundsTouched=true;roundNote()});
@@ -113,7 +115,7 @@ const qdesc0=x=>x.pool?`題目池 ${x.pool.map(n=>'Q'+n).join('、')}（${x.pool
 // "5/6, 5/7, 5/6|7, 20/21x" -> [[[5],[6]], [[5],[7]], [[5],[6,7]], [[20],[21],true]]
 //   (left = Player 1, right = Player 2, | = candidates, x at the end = no state information in that round)
 function parseSpec(txt){const toks=txt.trim().replace(/\s*([\/／|｜])\s*/g,'$1').replace(/／/g,'/').replace(/｜/g,'|').replace(/\s+([xXｘＸmMｍＭaAａＡrRｒＲ]+)(?=$|[,，、;；\s])/g,'$1').split(/[,，、;；\s]+/).filter(Boolean);
- const side=(x,t)=>{const a=x.split('|').map(Number);if(!x||a.some(n=>!questions[n])||new Set(a).size!==a.length)throw Error(`「${t}」看不懂：題號要是 1–8、10–18、20–23、35–38、43–46 或 50，候選題目用 | 分開、不要重複；不顯示狀態的回合在後面加 x`);return a};
+ const side=(x,t)=>{const a=x.split('|').map(Number);if(!x||a.some(n=>!questions[n])||new Set(a).size!==a.length)throw Error(`「${t}」看不懂：題號要是 1–8、10–18、20–25、35–38、43–46 或 50，候選題目用 | 分開、不要重複；不顯示狀態的回合在後面加 x`);return a};
  const spec=toks.map(t0=>{const fl=(t0.match(/[xXｘＸmMｍＭaAａＡrRｒＲ]+$/)||[''])[0],t=t0.slice(0,t0.length-fl.length);
   const hide=/[xXｘＸ]/.test(fl),bm=/[mMｍＭ]/.test(fl),ba=/[aAａＡ]/.test(fl),br=/[rRｒＲ]/.test(fl);if(bm+ba+br>1)throw Error(`「${t0}」寫了不只一種電腦：一組只能是鏡像（m）、反鏡像（a）或隨機（r）其中一種`);
   const parts=t.split('/');if(parts.length>2)throw Error(`「${t0}」看不懂，請寫成 5/6、5/6|7、20/21x、10/15xa 或 10/15xr 這樣`);const a=side(parts[0],t0);const e=[a,parts.length===2?side(parts[1],t0):a.slice()];
@@ -133,16 +135,16 @@ document.querySelectorAll('input[name=qmode]').forEach(r=>r.addEventListener('ch
 // when you and your opponent are on the same state: what YOU get (ownSame) and what the question SAYS the OPPONENT gets (oppSame);
 // Q20/Q21 say nothing about the opponent; Q10 takes what the opponent's question says about him
 const isQ35=n=>n>=35&&n<=38;   // Q35–Q38: own score from the opponent's words; both players must have one
-const ownSame={11:1,12:-1,13:1,14:1,15:0,16:0,17:1,18:1,20:1,21:0,22:0,23:0,43:1,44:1,45:0,46:0},oppSame={11:0,12:0,13:1,14:-1,15:1,16:-1,17:20,18:-20,43:1,44:-1,45:1,46:-1};
+const ownSame={11:1,12:-1,13:1,14:1,15:0,16:0,17:1,18:1,20:1,21:0,22:0,23:0,24:0,25:0,43:1,44:1,45:0,46:0},oppSame={11:0,12:0,13:1,14:-1,15:1,16:-1,17:20,18:-20,24:0,25:0,43:1,44:-1,45:1,46:-1};
 // the same, for "both have chosen and the choices differ"
-const ownDiff={11:0,12:0,13:0,14:0,15:0,16:0,17:0,18:0,20:0,21:1,22:1,23:-1,43:1,44:1,45:0,46:0},oppDiff={22:1,23:-1,43:-1,44:1,45:-1,46:1};
+const ownDiff={11:0,12:0,13:0,14:0,15:0,16:0,17:0,18:0,20:0,21:1,22:1,23:-1,24:1,25:-1,43:1,44:1,45:0,46:0},oppDiff={22:1,23:-1,24:-1,25:1,43:-1,44:1,45:-1,46:1};
 const saysOpp=v=>v<0?`對手被扣 ${-v} 分`:`對手得 ${v} 分`;
 const partners=x=>Object.keys(questions).map(Number).filter(y=>!pairProblem(x,y));
-const qnotes={10:'得分完全由對手的題目決定。兩人選擇相同時：對手 Q11、Q12 → 0；Q13、Q15 → +1；Q14、Q16 → −1；Q17 → +20；Q18 → −20；Q43、Q45 → +1；Q44、Q46 → −1。兩人選擇不同時（兩人都要有選擇）：對手 Q22、Q44、Q46 → +1；Q23、Q43、Q45 → −1',43:'兩人都要有選擇才算「不同」',44:'兩人都要有選擇才算「不同」',45:'兩人都要有選擇才算「不同」',46:'兩人都要有選擇才算「不同」',12:'分數可能為負',21:'兩人都要有選擇才算「不同」',22:'兩人都要有選擇才算「不同」',23:'分數可能為負。兩人都要有選擇才算「不同」'};
+const qnotes={10:'得分完全由對手的題目決定。兩人選擇相同時：對手 Q11、Q12 → 0；Q13、Q15 → +1；Q14、Q16 → −1；Q17 → +20；Q18 → −20；Q43、Q45 → +1；Q44、Q46 → −1。兩人選擇不同時（兩人都要有選擇）：對手 Q22、Q25、Q44、Q46 → +1；Q23、Q24、Q43、Q45 → −1',43:'兩人都要有選擇才算「不同」',44:'兩人都要有選擇才算「不同」',45:'兩人都要有選擇才算「不同」',46:'兩人都要有選擇才算「不同」',12:'分數可能為負',21:'兩人都要有選擇才算「不同」',22:'兩人都要有選擇才算「不同」',23:'分數可能為負。兩人都要有選擇才算「不同」',24:'兩人都要有選擇才算「不同」',25:'分數可能為負。兩人都要有選擇才算「不同」'};
 qnotes[50]='「對手認為它可能是真實狀態」＝這個狀態在對手得到的資訊範圍內（對手看到「在 … 之中」的那幾個，或「一定不在 … 之中」以外的那幾個）。要顯示狀態資訊才有意義，不要加 x';
 const q35note='自己的得分由對手的題目決定：對手 Q35 → 對手選真實狀態時你 +1；Q36 → 對手選非真實狀態時 +1；Q37 → 對手選真實狀態時 −1；Q38 → 對手選非真實狀態時 −1';
 for(const n of [35,36,37,38])qnotes[n]=q35note;
-for(const n of [10,11,12,13,14,15,16,17,18,20,21,22,23,35,36,37,38,43,44,45,46])qnotes[n]=(qnotes[n]?qnotes[n]+'。':'')+'對手必須是 '+partners(n).map(y=>'Q'+y).join('、');
+for(const n of [10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,35,36,37,38,43,44,45,46])qnotes[n]=(qnotes[n]?qnotes[n]+'。':'')+'對手必須是 '+partners(n).map(y=>'Q'+y).join('、');
 const mixedNote='兩人可能不同題的場次，改用：';
 function buildBank(){const rows=Object.entries(questions).map(([n,q])=>{const tr=document.createElement('tr');
  const a=document.createElement('td');a.textContent='Q'+n;const b=document.createElement('td');const t=document.createElement('div');t.textContent=q[1];b.append(t);
@@ -153,7 +155,7 @@ buildBank();
 // what a question says about the opponent must be what the opponent's own question gives him; Q10 needs an opponent from Q11–Q16
 function pairProblem(a,b){if(isQ35(a)!==isQ35(b)){const x=isQ35(a)?a:b,y=isQ35(a)?b:a;return `Q${x} 的得分要由對手的題目決定，對手必須是 Q35–Q38，但對手可能是 Q${y}`;}
  for(const [x,y] of [[a,b],[b,a]]){
- if(x===10&&oppSame[y]===undefined&&oppDiff[y]===undefined)return `Q10 的得分完全由對手的題目決定，對手必須是 Q11–Q18、Q22、Q23 或 Q43–Q46，但對手可能是 Q${y}`;
+ if(x===10&&oppSame[y]===undefined&&oppDiff[y]===undefined)return `Q10 的得分完全由對手的題目決定，對手必須是 Q11–Q18、Q22–Q25 或 Q43–Q46，但對手可能是 Q${y}`;
  const c=oppSame[x];if(c!==undefined&&y!==10&&ownSame[y]!==c)return `Q${x} 寫「${oppDiff[x]!==undefined?'兩人選擇相同時':''}${saysOpp(c)}」，但對手可能是 Q${y}，而 Q${y} ${ownSame[y]!==undefined?'在兩人選擇相同時'+saysOpp(ownSame[y]).slice(2):'的得分不是只看兩人是否相同'}`;
  const cd=oppDiff[x];if(cd!==undefined&&y!==10&&ownDiff[y]!==cd)return `Q${x} 寫「兩人選擇不同時${saysOpp(cd)}」，但對手可能是 Q${y}，而 Q${y} ${ownDiff[y]!==undefined?'在兩人選擇不同時'+saysOpp(ownDiff[y]).slice(2):'的得分不是只看兩人是否相同'}`;}return null}
 function readSettings(){
