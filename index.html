@@ -7,7 +7,7 @@
 <label>對手</label><div class="modes"><label><input type="radio" name="botmode" value="" checked>另一位參與者（依到達順序兩兩配對）</label><label><input type="radio" name="botmode" value="mirror">電腦：鏡像（參與者選什麼，電腦就選一樣的）</label><label><input type="radio" name="botmode" value="anti">電腦：反鏡像（電腦隨機選一個和參與者不同的狀態）</label><label><input type="radio" name="botmode" value="random">電腦：隨機（電腦不看參與者，從所有狀態中隨機選，可能剛好一樣）</label></div><p class="muted">選電腦時，每位參與者一進來就和電腦配對（參與者是 Player 1、電腦是 Player 2），不用等人。電腦一直是 Ready；每回合開始後 0.3–1 秒電腦先隨機選一格；之後參與者每點一次，電腦在 0.3–1 秒後跟著選。參與者畫面和真人對手時一樣，不會顯示對手是電腦。只能用在自動配對場次。題組裡標了 m／a／r 的組照標示；沒標示的組照這裡的選擇。</p>
 <label for="newcode">加入代碼（3–12 個英文或數字；留空會自動產生 4 位數）</label><input id="newcode" autocomplete="off" maxlength="12" placeholder="留空自動產生">
 <div class="controls" style="margin-top:12px"><button id="createSession" class="main">建立自動配對場次</button><button id="create">建立單一雙人遊戲（手動）</button></div>
-<p class="muted">自動配對：把加入代碼告訴所有參與者，輸入代碼的人依到達順序兩兩配對，配對後雙方按 Ready 就自動開始。</p><h2 style="margin-top:26px">管理開放中的場次</h2><label for="adminpw">實驗者密碼</label><input id="adminpw" type="password" autocomplete="current-password"><div class="controls" style="margin-top:12px"><button id="listSessions">顯示開放中的場次</button><button id="listClosed">顯示已關閉的場次</button></div><div id="sessionlist"></div><div id="closedlist"></div><p class="muted">「關閉場次」：不再接受新的參與者，並釋出加入代碼；進行中的組可以玩完。「全部停止」：連進行中的組也一起停止。「顯示已關閉的場次」：列出最近關閉的場次（新的在前），可以開監看頁或直接下載資料（CSV）。</p></div>
+<p class="muted">自動配對：把加入代碼告訴所有參與者，輸入代碼的人依到達順序兩兩配對，配對後雙方按 Ready 就自動開始。</p><h2 style="margin-top:26px">管理開放中的場次</h2><label for="adminpw">實驗者密碼</label><input id="adminpw" type="password" autocomplete="current-password"><div class="controls" style="margin-top:12px"><button id="listSessions">顯示開放中的場次</button><button id="listClosed">顯示已關閉的場次</button></div><div id="sessionlist"></div><div id="closedlist"></div><p class="muted">「關閉場次」：不再接受新的參與者，並釋出加入代碼；進行中的組可以玩完。「全部停止」：連進行中的組也一起停止。列表最上面的「關閉所有場次」「停止所有場次」一次處理所有開放中的場次（按兩次確認）。「顯示已關閉的場次」：列出最近關閉的場次（新的在前），可以開監看頁或直接下載資料（CSV）。</p></div>
 <div id="monitor" class="hide">
 <section class="card"><h2>場次監看</h2><p class="muted" style="margin:0">加入代碼</p><div id="sessioncode" class="timer">—</div><p class="muted">參與者打開實驗網頁、在「參加實驗」輸入這個代碼即可。</p><label>或直接發參與者連結</label><input id="sessionurl" readonly><button id="copySession">複製參與者連結</button><div id="qrbox" class="qrbox" aria-label="參與者連結的 QR code"></div><button id="qrBig" class="hide">全螢幕顯示 QR code</button>
 <p id="sessioninfo" class="muted"></p><div class="stats"><div><b id="nWaiting">0</b>等待配對</div><div><b id="nPlaying">0</b>進行中</div><div><b id="nDone">0</b>已完成</div></div>
@@ -201,7 +201,12 @@ async function listSessions(){const pw=el('adminpw').value;if(!pw){msg('請輸�
   if(!d.ok){msg(adminErr[d.error]||d.error);el('sessionlist').replaceChildren();return;}
   msg('');
   if(!d.sessions.length){const p=document.createElement('p');p.className='muted';p.textContent='目前沒有開放中的場次。';el('sessionlist').replaceChildren(p);return;}
-  el('sessionlist').replaceChildren(...d.sessions.map(x=>{
+  const allbar=document.createElement('div');allbar.className='controls';allbar.style.margin='10px 0 2px';
+  const closeAll=document.createElement('button');closeAll.textContent=`關閉所有場次（${d.sessions.length} 個）`;
+  const stopAll=document.createElement('button');stopAll.className='danger';stopAll.textContent=`停止所有場次（${d.sessions.length} 個）`;
+  armBtn(closeAll,()=>adminCloseAll(d.sessions,false,[closeAll,stopAll]));armBtn(stopAll,()=>adminCloseAll(d.sessions,true,[closeAll,stopAll]));
+  allbar.append(closeAll,stopAll);
+  el('sessionlist').replaceChildren(allbar,...d.sessions.map(x=>{
    const row=document.createElement('div');row.className='srow';
    const code=document.createElement('div');code.className='scode';code.textContent=x.code||'—';
    const info=document.createElement('div');info.className='muted';
@@ -215,6 +220,16 @@ async function listSessions(){const pw=el('adminpw').value;if(!pw){msg('請輸�
     clearTimeout(armed);armed=null;adminClose(x.session,true,stop);};
    ctl.append(mon,close,stop);row.append(code,info,ctl);return row;}));
  }catch(e){msg(e.message)}finally{el('listSessions').disabled=false}}
+function armBtn(btn,act){const label=btn.textContent;let armed=null;
+ btn.onclick=()=>{if(!armed){btn.textContent='再按一次確認';btn.classList.add('armed');armed=setTimeout(()=>{armed=null;btn.textContent=label;btn.classList.remove('armed')},3000);return;}
+  clearTimeout(armed);armed=null;act();};}
+async function adminCloseAll(list,stopGames,btns){btns.forEach(b=>b.disabled=true);let n=0;const bad=[];
+ for(const x of list){
+  try{const d=await rpc('live_admin_close',{p_password:el('adminpw').value,p_session:x.session,p_stop_games:stopGames});
+   if(d.ok)n++;else{bad.push(`${x.code||'—'}：${adminErr[d.error]||d.error}`);if(d.error==='wrong_password'||d.error==='locked'||d.error==='no_password')break;}
+  }catch(e){bad.push(`${x.code||'—'}：${e.message}`)}}
+ await listSessions();
+ msg((stopGames?`已停止 ${n} 個場次（含進行中的組），代碼已釋出。`:`已關閉 ${n} 個場次，代碼已釋出；進行中的組可以玩完。`)+(bad.length?`\n沒有成功：${bad.join('；')}`:''));}
 async function adminClose(sid,stopGames,btn){btn.disabled=true;
  try{const d=await rpc('live_admin_close',{p_password:el('adminpw').value,p_session:sid,p_stop_games:stopGames});
   if(!d.ok){msg(adminErr[d.error]||d.error);btn.disabled=false;return;}
