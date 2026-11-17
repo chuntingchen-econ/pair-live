@@ -393,7 +393,7 @@ function render(){
  el('stateset').classList.toggle('hide',!!game.hide_info);el('notice').classList.toggle('hide',!!game.hide_info);   // option: no state / private information
  if(game.round===0){el('notice').textContent='尚未產生第一回合';el('qtitle').textContent='等待開始';el('qtitle').classList.remove('hide');el('rules').textContent='';}
  else{const qd=questions[game.question]||['',''];el('qtitle').textContent='你的題目';el('qtitle').dataset.q=game.question;
- el('timerule').textContent=`本回合有 ${game.seconds} 秒，每秒都計分。`;el('timecard').classList.remove('hide');
+ el('timerule').textContent=`本回合有 ${game.seconds} 秒，每秒都計分。每回合開始時，雙方預設選擇 ${(game.states||[]).includes('B')?'B':(game.states||[])[Math.floor(((game.states||[]).length-1)/2)]}；可以隨時點選其他位置，不需重複點擊。`;el('timecard').classList.remove('hide');
  // v38: decided per round. When I am told that the opponent's only possible question this round is mine, the original
  // wording (which states both players' payoffs) is true even in a session where other rounds have different questions
  const roundSame=!game.pool&&(game.opp_options||[]).length===1&&game.opp_options[0]===game.question;
