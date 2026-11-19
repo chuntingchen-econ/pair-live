@@ -411,9 +411,9 @@ function render(){
  el('poollead').textContent=game.told_same?'和你的題目相同。':(opts.length>1?'是下列其中之一：':'');el('poollead').classList.toggle('hide',!game.told_same&&opts.length<2);
  if(game.told_same&&el('poollist').dataset.key){el('poollist').dataset.key='';el('poollist').replaceChildren();}
  if(opts.length&&el('poollist').dataset.key!==opts.join(',')){el('poollist').dataset.key=opts.join(',');
-  // the opponent's rule, rewritten from his side: 你 -> 她/他 and 對手 -> 你, so it reads correctly on my screen
-  // (她/他 instead of 對手, so the word 對手 never points at the participant himself)
-  const flip=t=>t.replace(/你|對手/g,w=>w==='你'?'她/他':'你');
+  // the opponent's rule, rewritten from his side: 你 -> 他/她 and 對手 -> 你, so it reads correctly on my screen
+  // (他/她 instead of 對手, so the word 對手 never points at the participant himself)
+  const flip=t=>t.replace(/你|對手/g,w=>w==='你'?'他/她':'你');
   el('poollist').replaceChildren(...opts.map((n,i)=>{const box=document.createElement('div');box.className=opts.length>1?'oppbox':'oppbox single';box.dataset.q=n;   // a frame only when there are several candidates
    const lab=document.createElement('b');lab.textContent=opts.length>1?'O'+(i+1):'';if(opts.length<2)lab.className='hide';const txt=document.createElement('span');txt.textContent=flip(mixedRules[n]||questions[n][1]);
    box.append(lab,txt);return box}));}
