@@ -1,10 +1,11 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pair Live</title><style>
-:root{font-family:system-ui,-apple-system,sans-serif;color:#20222a;background:#f4f5f7}body{max-width:560px;margin:auto;padding:14px}h1{font-size:25px}h2{font-size:19px}.card{background:#fff;border-radius:14px;padding:17px;margin:12px 0;box-shadow:0 1px 5px #ddd}input{box-sizing:border-box;width:100%;padding:12px;font-size:17px;border:1px solid #c5c8d0;border-radius:8px}select{box-sizing:border-box;width:100%;padding:12px;font-size:16px;border:1px solid #c5c8d0;border-radius:8px;background:#fff;color:inherit;text-overflow:ellipsis}label{display:block;margin:10px 0 5px;font-weight:600}button{padding:13px;border:1px solid #bbb;border-radius:10px;font-size:16px;background:#fff;cursor:pointer}button.main{background:#223149;color:#fff;border-color:#223149}button.danger{border-color:#a23426;color:#a23426}button.danger.armed{background:#a23426;color:#fff}button:disabled{opacity:.35}button:active{transform:scale(.98)}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(62px,1fr));gap:9px}.choices button{font-size:22px;font-weight:650;touch-action:manipulation}.choices button,.oppbtn{color:#a3a8b2}.oppbtn{display:flex;align-items:center;justify-content:center;padding:13px;border:1px solid #bbb;border-radius:10px;font-size:22px;font-weight:650;background:#fff}.choices .picked{outline:3px solid #223149;color:#10131a;font-weight:800}.rowlabel{margin:14px 0 6px;color:#626b78;font-size:15px;font-weight:600}.big{font-size:30px;font-weight:700}.timer{font-size:44px;font-weight:700;font-variant-numeric:tabular-nums}.muted{color:#626b78}.hide{display:none}.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pair>div{background:#f1f2f5;border-radius:10px;padding:14px;text-align:center}.history{max-height:185px;overflow-y:auto;line-height:1.8}.warn{color:#a23426}.controls{display:flex;gap:10px;flex-wrap:wrap}#message{white-space:pre-wrap}#endcard{border:2px solid #223149}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:6px 4px;border-bottom:1px solid #e3e5ea}th{color:#626b78;font-weight:600}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.stats>div{background:#f1f2f5;border-radius:10px;padding:10px;text-align:center}.stats b{display:block;font-size:24px}#sessioncode{letter-spacing:.12em}.lead{font-size:18px;line-height:1.6;margin:14px 0 6px}#notice{font-size:18px;line-height:1.6;margin:6px 0}#timerule{font-size:21px;line-height:1.7;font-weight:500;margin:0}#rules{font-size:21px;line-height:1.7;font-weight:500;color:#20222a}#result{margin:10px 0 4px}.qbank{margin:14px 0 4px;border:1px solid #d5d8de;border-radius:10px;padding:10px 12px}.qbank summary{font-weight:600;cursor:pointer}.qbank table{margin-top:8px;font-size:14px}.qbank td{vertical-align:top;padding:6px 4px}.qbank td:first-child{font-weight:700;white-space:nowrap}.qbank .qnote{color:#626b78;font-size:13px;margin-top:2px}.modes label{display:flex;align-items:flex-start;gap:8px;margin:7px 0;font-weight:500;font-size:15px}.modes input{width:20px;height:20px;margin:1px 0 0;flex:none}.poollead{font-size:18px;margin:6px 0 2px}.oppgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:8px 0 6px}#readystatus{margin-bottom:8px}.oppbox{border:1.5px solid #c9ccd4;border-radius:10px;padding:12px 14px}.oppbox.single{border:0;padding:0}.oppbox b{display:block;font-size:16px;color:#626b78;margin-bottom:4px}.oppbox span{font-size:21px;line-height:1.7;font-weight:500;color:#20222a}.srow{border-top:1px solid #e3e5ea;padding:12px 0}#closedlist h3{margin:20px 0 4px;font-size:17px}.srow .scode{font-size:22px;font-weight:700;letter-spacing:.08em}.srow .controls{margin-top:8px}.srow button{padding:9px 12px;font-size:15px}.qpick{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin:4px 0}.qpick label{display:flex;align-items:center;gap:8px;margin:0;font-weight:500;font-size:15px}.qpick input{width:20px;height:20px;margin:0;flex:none}.qrbox{margin:12px 0 6px}.qrbox svg{width:220px;height:220px;display:block}.qrfull{position:fixed;inset:0;background:#fff;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer}.qrfull.hide{display:none}.qrfull svg{width:min(82vw,70vh);height:min(82vw,70vh);display:block}.qrfull .big{font-size:42px;letter-spacing:.12em}#result .pair b{display:block;font-size:32px;margin-top:4px;font-variant-numeric:tabular-nums}
+:root{font-family:system-ui,-apple-system,sans-serif;color:#20222a;background:#f4f5f7}body{max-width:560px;margin:auto;padding:14px}h1{font-size:25px}h2{font-size:19px}.card{background:#fff;border-radius:14px;padding:17px;margin:12px 0;box-shadow:0 1px 5px #ddd}input{box-sizing:border-box;width:100%;padding:12px;font-size:17px;border:1px solid #c5c8d0;border-radius:8px}select{box-sizing:border-box;width:100%;padding:12px;font-size:16px;border:1px solid #c5c8d0;border-radius:8px;background:#fff;color:inherit;text-overflow:ellipsis}label{display:block;margin:10px 0 5px;font-weight:600}button{padding:13px;border:1px solid #bbb;border-radius:10px;font-size:16px;background:#fff;cursor:pointer}button.main{background:#223149;color:#fff;border-color:#223149}button.danger{border-color:#a23426;color:#a23426}button.danger.armed{background:#a23426;color:#fff}button:disabled{opacity:.35}button:active{transform:scale(.98)}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(62px,1fr));gap:9px}.choices button{font-size:22px;font-weight:650;touch-action:manipulation}.choices button,.oppbtn{color:#a3a8b2}.oppbtn{display:flex;align-items:center;justify-content:center;padding:13px;border:1px solid #bbb;border-radius:10px;font-size:22px;font-weight:650;background:#fff}.choices .picked{outline:3px solid #223149;color:#10131a;font-weight:800}.rowlabel{margin:14px 0 6px;color:#626b78;font-size:15px;font-weight:600}.big{font-size:30px;font-weight:700}.timer{font-size:44px;font-weight:700;font-variant-numeric:tabular-nums}.muted{color:#626b78}.hide{display:none}.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pair>div{background:#f1f2f5;border-radius:10px;padding:14px;text-align:center}.history{max-height:185px;overflow-y:auto;line-height:1.8}.warn{color:#a23426}.controls{display:flex;gap:10px;flex-wrap:wrap}#message{white-space:pre-wrap}#endcard{border:2px solid #223149}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:6px 4px;border-bottom:1px solid #e3e5ea}th{color:#626b78;font-weight:600}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.stats>div{background:#f1f2f5;border-radius:10px;padding:10px;text-align:center}.stats b{display:block;font-size:24px}#sessioncode{letter-spacing:.12em}.lead{font-size:18px;line-height:1.6;margin:14px 0 6px}#notice{font-size:18px;line-height:1.6;margin:6px 0}#timerule{font-size:21px;line-height:1.7;font-weight:500;margin:0}#rules{font-size:21px;line-height:1.7;font-weight:500;color:#20222a}#result{margin:10px 0 4px}.qbank{margin:14px 0 4px;border:1px solid #d5d8de;border-radius:10px;padding:10px 12px}.qbank summary{font-weight:600;cursor:pointer}.qbank table{margin-top:8px;font-size:14px}.qbank td{vertical-align:top;padding:6px 4px}.qbank td:first-child{font-weight:700;white-space:nowrap}.qbank .qnote{color:#626b78;font-size:13px;margin-top:2px}.modes label{display:flex;align-items:flex-start;gap:8px;margin:7px 0;font-weight:500;font-size:15px}.modes input{width:20px;height:20px;margin:1px 0 0;flex:none}.poollead{font-size:18px;margin:6px 0 2px}.oppgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:8px 0 6px}#readystatus{margin-bottom:8px}.oppbox{border:1.5px solid #c9ccd4;border-radius:10px;padding:12px 14px}.oppbox.single{border:0;padding:0}.oppbox b{display:block;font-size:16px;color:#626b78;margin-bottom:4px}.oppbox span{font-size:21px;line-height:1.7;font-weight:500;color:#20222a}.srow{border-top:1px solid #e3e5ea;padding:12px 0}#closedlist h3{margin:20px 0 4px;font-size:17px}.srow .scode{font-size:22px;font-weight:700;letter-spacing:.08em}.srow .controls{margin-top:8px}.srow button{padding:9px 12px;font-size:15px}.qpick{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin:4px 0}.qpick label{display:flex;align-items:center;gap:8px;margin:0;font-weight:500;font-size:15px}.qpick input{width:20px;height:20px;margin:0;flex:none}.qrbox{margin:12px 0 6px}.qrbox svg{width:220px;height:220px;display:block}.qrfull{position:fixed;inset:0;background:#fff;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer}.qrfull.hide{display:none}.qrfull svg{width:min(82vw,70vh);height:min(82vw,70vh);display:block}.qrfull .big{font-size:42px;letter-spacing:.12em}#result .pair b{display:block;font-size:32px;margin-top:4px;font-variant-numeric:tabular-nums}.clist{display:flex;flex-direction:column;gap:4px;max-height:260px;overflow:auto;border:1px solid #e3e5ea;border-radius:8px;padding:8px}.crow{display:flex;gap:6px;align-items:center;font-size:13px;color:#626b78}.crow i{display:inline-block;width:26px;height:26px;border-radius:6px;border:1px solid rgba(0,0,0,.2)}.cpal{display:grid;gap:10px;margin:8px 0}.cpal button{aspect-ratio:1;border-radius:12px;border:1px solid rgba(0,0,0,.18);padding:0}.cpal button.picked{outline:4px solid #223149;outline-offset:3px}.cpal button:disabled{cursor:default;opacity:1;transform:none}.cchip{display:inline-block;width:46px;height:46px;border-radius:10px;border:1px solid rgba(0,0,0,.18);vertical-align:middle}.crule{font-size:21px;line-height:1.7;font-weight:500;margin:0}#crule{box-sizing:border-box;width:100%;padding:10px;font:inherit;font-size:16px;border:1px solid #c5c8d0;border-radius:8px}
 </style></head><body>
 <h1>🎲 Pair Live</h1>
 <div id="joinbox" class="card"><h2>參加實驗</h2><label for="joincode">請輸入實驗者給你的代碼</label><input id="joincode" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="12" placeholder="例如 4821"><div class="controls" style="margin-top:12px"><button id="joinBtn" class="main">加入</button></div></div>
-<div id="setup" class="card hide"><h2>實驗者：建立實驗</h2><label for="states">狀態集合 S</label><input id="states" value="ABC" maxlength="6"><label for="seconds">每回合秒數</label><input id="seconds" type="number" value="30" min="1" max="300"><details id="qbank" class="qbank"><summary>題目庫（點開查看所有題目）</summary><div id="qbanklist"></div></details><input type="radio" name="qmode" value="pairs" checked hidden><div id="qpickbox" class="hide"><label id="qpicklabel">題目（勾選要用的題目）</label><div id="qpick" class="qpick"></div><p id="qpicknote" class="muted"></p></div><div id="poolopts" class="hide"><label>題目池：兩人的題目</label><div class="modes"><label><input type="radio" name="poolsame" value="diff" checked>各自抽（兩人可能不同題）</label><label><input type="radio" name="poolsame" value="same">抽一題兩人共用（兩人一定同題）</label><label><input type="checkbox" id="tellsame" disabled>告訴受試者「對手的題目和你相同」（只能搭配「兩人共用」；不勾的話，受試者看到的畫面和「各自抽」完全一樣）</label></div></div><div id="pairsbox"><label for="savedsets">已存的題組</label><select id="savedsets"><option value="">（選一個題組，自動填入下面）</option></select><label for="qpairs">題組（每一組是一個回合的題目：Player 1／Player 2）</label><input id="qpairs" autocomplete="off" placeholder="例如 5/6, 5/7, 5/6|7, 20/21x"><p class="muted">每一組代表一個回合的設定。預設每一對受試者會把題組<b>隨機排序</b>後依序玩，每一對的順序各自抽；勾選下面的「題組順序固定」則每一對都照輸入的順序玩。斜線左邊是 Player 1、右邊是 Player 2；寫 5 或 5/5 代表兩人同題。用 | 列出候選題目，該回合從中等機率抽一題，例如 5/6|7 是 Player 1 做 Q5、Player 2 從 Q6、Q7 抽一題。在一組後面加 x（例如 20/21x 或 20/21 x），這個回合兩人都看不到真實狀態和私有資訊。加 m、a 或 r，這個回合的對手是電腦：m＝鏡像、a＝反鏡像、r＝隨機（例如 10/15xm, 10/15xa, 10/15xr）；題組裡只要有一組標了 m／a／r，整場都是和電腦配對。</p><div class="modes"><label><input type="checkbox" id="fixorder">題組順序固定：每一對都照輸入的順序玩（不勾＝每一對各自隨機排序）</label></div><label for="rounds">總回合數</label><input id="rounds" type="number" value="4" min="1" max="100"><p id="roundnote" class="muted"></p><div class="modes"><label><input type="checkbox" id="showopp1" checked>告訴 Player 1：對手（Player 2）本回合可能的題目</label><label><input type="checkbox" id="showopp2" checked>告訴 Player 2：對手（Player 1）本回合可能的題目</label></div><p class="muted">勾了之後，受試者會看到「對手本回合的題目」卡片：對手只有一個候選時，他就知道對手的題目；有多個候選時，看到「是下列其中之一」。不勾的話，受試者只看到自己的題目。</p></div><p class="muted">每回合重新抽取真實狀態和兩人的資訊。</p><div class="modes"><label><input type="checkbox" id="hideinfo">整場都不顯示真實狀態和私有資訊（給 Q10–Q16、Q20–Q25、Q43–Q46 這類與真實狀態無關的題目用；受試者只看到 A、B、C… 按鈕和題目）。只有部分回合不顯示時，改在題組裡那一組後面加 x</label></div>
-<label>對手</label><div class="modes"><label><input type="radio" name="botmode" value="" checked>另一位參與者（依到達順序兩兩配對）</label><label><input type="radio" name="botmode" value="mirror">電腦：鏡像（參與者選什麼，電腦就選一樣的）</label><label><input type="radio" name="botmode" value="anti">電腦：反鏡像（電腦隨機選一個和參與者不同的狀態）</label><label><input type="radio" name="botmode" value="random">電腦：隨機（電腦不看參與者，從所有狀態中隨機選，可能剛好一樣）</label></div><p class="muted">選電腦時，每位參與者一進來就和電腦配對（參與者是 Player 1、電腦是 Player 2），不用等人。電腦一直是 Ready；每回合開始後 0.3–1 秒電腦先隨機選一格；之後參與者每點一次，電腦在 0.3–1 秒後跟著選。參與者畫面和真人對手時一樣，不會顯示對手是電腦。只能用在自動配對場次。題組裡標了 m／a／r 的組照標示；沒標示的組照這裡的選擇。</p>
+<div id="setup" class="card hide"><h2>實驗者：建立實驗</h2><label>題目系列</label><div class="modes"><label><input type="radio" name="series" value="state" checked>真實狀態系列（原本的題目：真實狀態、題組、兩人即時選擇）</label><label><input type="radio" name="series" value="color">顏色協調系列（實驗者隨機抽顏色；Player 1 先選，Player 2 看不到再選；選到同色都得 1 分）</label></div><div id="stateopts"><label for="states">狀態集合 S</label><input id="states" value="ABC" maxlength="6"><label for="seconds">每回合秒數</label><input id="seconds" type="number" value="30" min="1" max="300"><details id="qbank" class="qbank"><summary>題目庫（點開查看所有題目）</summary><div id="qbanklist"></div></details><input type="radio" name="qmode" value="pairs" checked hidden><div id="qpickbox" class="hide"><label id="qpicklabel">題目（勾選要用的題目）</label><div id="qpick" class="qpick"></div><p id="qpicknote" class="muted"></p></div><div id="poolopts" class="hide"><label>題目池：兩人的題目</label><div class="modes"><label><input type="radio" name="poolsame" value="diff" checked>各自抽（兩人可能不同題）</label><label><input type="radio" name="poolsame" value="same">抽一題兩人共用（兩人一定同題）</label><label><input type="checkbox" id="tellsame" disabled>告訴受試者「對手的題目和你相同」（只能搭配「兩人共用」；不勾的話，受試者看到的畫面和「各自抽」完全一樣）</label></div></div><div id="pairsbox"><label for="savedsets">已存的題組</label><select id="savedsets"><option value="">（選一個題組，自動填入下面）</option></select><label for="qpairs">題組（每一組是一個回合的題目：Player 1／Player 2）</label><input id="qpairs" autocomplete="off" placeholder="例如 5/6, 5/7, 5/6|7, 20/21x"><p class="muted">每一組代表一個回合的設定。預設每一對受試者會把題組<b>隨機排序</b>後依序玩，每一對的順序各自抽；勾選下面的「題組順序固定」則每一對都照輸入的順序玩。斜線左邊是 Player 1、右邊是 Player 2；寫 5 或 5/5 代表兩人同題。用 | 列出候選題目，該回合從中等機率抽一題，例如 5/6|7 是 Player 1 做 Q5、Player 2 從 Q6、Q7 抽一題。在一組後面加 x（例如 20/21x 或 20/21 x），這個回合兩人都看不到真實狀態和私有資訊。加 m、a 或 r，這個回合的對手是電腦：m＝鏡像、a＝反鏡像、r＝隨機（例如 10/15xm, 10/15xa, 10/15xr）；題組裡只要有一組標了 m／a／r，整場都是和電腦配對。</p><div class="modes"><label><input type="checkbox" id="fixorder">題組順序固定：每一對都照輸入的順序玩（不勾＝每一對各自隨機排序）</label></div><label for="rounds">總回合數</label><input id="rounds" type="number" value="4" min="1" max="100"><p id="roundnote" class="muted"></p><div class="modes"><label><input type="checkbox" id="showopp1" checked>告訴 Player 1：對手（Player 2）本回合可能的題目</label><label><input type="checkbox" id="showopp2" checked>告訴 Player 2：對手（Player 1）本回合可能的題目</label></div><p class="muted">勾了之後，受試者會看到「對手本回合的題目」卡片：對手只有一個候選時，他就知道對手的題目；有多個候選時，看到「是下列其中之一」。不勾的話，受試者只看到自己的題目。</p></div><p class="muted">每回合重新抽取真實狀態和兩人的資訊。</p><div class="modes"><label><input type="checkbox" id="hideinfo">整場都不顯示真實狀態和私有資訊（給 Q10–Q16、Q20–Q25、Q43–Q46 這類與真實狀態無關的題目用；受試者只看到 A、B、C… 按鈕和題目）。只有部分回合不顯示時，改在題組裡那一組後面加 x</label></div>
+<label>對手</label><div class="modes"><label><input type="radio" name="botmode" value="" checked>另一位參與者（依到達順序兩兩配對）</label><label><input type="radio" name="botmode" value="mirror">電腦：鏡像（參與者選什麼，電腦就選一樣的）</label><label><input type="radio" name="botmode" value="anti">電腦：反鏡像（電腦隨機選一個和參與者不同的狀態）</label><label><input type="radio" name="botmode" value="random">電腦：隨機（電腦不看參與者，從所有狀態中隨機選，可能剛好一樣）</label></div><p class="muted">選電腦時，每位參與者一進來就和電腦配對（參與者是 Player 1、電腦是 Player 2），不用等人。電腦一直是 Ready；每回合開始後 0.3–1 秒電腦先隨機選一格；之後參與者每點一次，電腦在 0.3–1 秒後跟著選。參與者畫面和真人對手時一樣，不會顯示對手是電腦。只能用在自動配對場次。題組裡標了 m／a／r 的組照標示；沒標示的組照這裡的選擇。</p></div>
+<div id="coloropts" class="hide"><label>每題幾個顏色</label><div class="modes"><label><input type="radio" name="csize" value="2" checked>2 個</label><label><input type="radio" name="csize" value="3">3 個</label></div><label for="cn">題數</label><input id="cn" type="number" value="10" min="1" max="60"><div class="modes"><label><input type="checkbox" id="cshuffle" checked>兩人看到的顏色順序各自隨機打亂（不勾＝兩人看到一樣的順序，位置也可以當線索）</label><label><input type="checkbox" id="cfeedback" checked>每題結束後，兩人都看到對方選了哪個顏色、有沒有對上</label></div><label for="crule">得分規則（兩人都看到這段文字）</label><textarea id="crule" rows="3">如果你和對手選了一樣的顏色，你們都得 1 分；如果選了不一樣的顏色，你們都得 0 分。</textarea><label>這個場次的顏色（實驗者從 RGB 隨機抽；每一對都做同樣的題）</label><div id="clist" class="clist"></div><div class="controls" style="margin-top:8px"><button id="cregen" type="button">重新抽顏色</button></div><p class="muted">同一題裡的顏色彼此至少差 RGB 距離 80，才分得出來。顏色協調系列只能用自動配對場次，不能用電腦對手。</p></div>
 <label for="newcode">加入代碼（3–12 個英文或數字；留空會自動產生 4 位數）</label><input id="newcode" autocomplete="off" maxlength="12" placeholder="留空自動產生">
 <div class="controls" style="margin-top:12px"><button id="createSession" class="main">建立自動配對場次</button><button id="create">建立單一雙人遊戲（手動）</button></div>
 <p class="muted">自動配對：把加入代碼告訴所有參與者，輸入代碼的人依到達順序兩兩配對，配對後雙方按 Ready 就自動開始。</p><h2 style="margin-top:26px">管理開放中的場次</h2><label for="adminpw">實驗者密碼</label><input id="adminpw" type="password" autocomplete="current-password"><div class="controls" style="margin-top:12px"><button id="listSessions">顯示開放中的場次</button><button id="listClosed">顯示已關閉的場次</button></div><div id="sessionlist"></div><div id="closedlist"></div><p class="muted">「關閉場次」：不再接受新的參與者，並釋出加入代碼；進行中的組可以玩完。「全部停止」：連進行中的組也一起停止。列表最上面的「關閉所有場次」「停止所有場次」一次處理所有開放中的場次（按兩次確認）。「顯示已關閉的場次」：列出最近關閉的場次（新的在前），可以開監看頁或直接下載資料（CSV）。</p></div>
@@ -18,6 +19,7 @@
 </div>
 <div id="game" class="hide">
 <section id="expiredcard" class="card hide"><h2>已移出配對</h2><p>你已等待超過 30 分鐘，仍沒有配對到另一位參與者，系統已將你移出配對。</p><p class="muted">若要繼續參加，請回到首頁重新輸入代碼。</p><button id="expiredHome" class="main">回到首頁</button></section><section id="waitcard" class="card hide"><h2>正在等待另一位參與者…</h2><p class="muted">請保持這個頁面開啟。配對成功後會自動進入第一回合。</p><p id="waitconn" class="muted"></p></section>
+<div id="colorbody" class="hide"></div>
 <div id="gamebody">
 <section id="endcard" class="card hide"><h2>實驗已結束</h2><p id="endtext" class="muted">所有紀錄都已保存在資料庫。</p><button id="home" class="main">返回首頁／建立新遊戲</button></section>
 <section class="card"><b id="seat"></b><p id="roundlabel" class="muted"></p><p id="stateset" class="lead"></p><div id="notice" class="big">—</div><p id="infonote" class="lead hide">你和對手各自得到一則關於真實狀態的訊息，可能是完整、部分或沒有額外的資訊；兩人的訊息各自抽出，可能不同。</p><p id="connection" class="muted"></p></section>
@@ -187,10 +189,29 @@ async function createGame(){try{
  try{sessionStorage.setItem('guest_'+room,`${BASE}?room=${room}&token=${d.guest_token}`)}catch{}
  history.replaceState({},'',`${BASE}?room=${room}&token=${token}`);await enter();
  }catch(e){msg(e.message==='Incompatible questions'?'題目組合不相容：有題目寫到的對手得分，和對手的題目不符。':e.message);el('create').disabled=false}}
+// ---------- 顏色協調 series: experimenter side (v44) ----------
+const seriesSel=()=>document.querySelector('input[name=series]:checked').value;
+const hex2=(r,g,b)=>'#'+[r,g,b].map(x=>Math.round(x).toString(16).padStart(2,'0')).join('');
+const rgbOf=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+const cdist=(a,b)=>{const x=rgbOf(a),y=rgbOf(b);return Math.hypot(x[0]-y[0],x[1]-y[1],x[2]-y[2])};
+let colorSpec=[];
+// each question: 2 or 3 colours drawn uniformly from RGB, redrawn until every pair is at least 80 apart
+function genColors(){const n=Math.max(1,Math.min(60,Math.round(Number(el('cn').value)||10))),k=Number(document.querySelector('input[name=csize]:checked').value);el('cn').value=n;
+ colorSpec=Array.from({length:n},()=>{for(;;){const cs=Array.from({length:k},()=>hex2(Math.random()*255,Math.random()*255,Math.random()*255));if(cs.every((a,i)=>cs.every((b,j)=>j<=i||cdist(a,b)>=80)))return cs}});
+ el('clist').replaceChildren(...colorSpec.map((cs,i)=>{const d=document.createElement('div');d.className='crow';d.append(`第 ${i+1} 題`);cs.forEach(h=>{const s=document.createElement('i');s.style.background=h;s.title=h;d.append(s)});return d}));}
+function showSeries(){const c=seriesSel()==='color';el('stateopts').classList.toggle('hide',c);el('coloropts').classList.toggle('hide',!c);el('create').classList.toggle('hide',c);msg('');if(c&&!colorSpec.length)genColors();}
+document.querySelectorAll('input[name=series]').forEach(r=>r.addEventListener('change',showSeries));
+document.querySelectorAll('input[name=csize]').forEach(r=>r.addEventListener('change',genColors));
+el('cn').addEventListener('change',genColors);el('cregen').onclick=genColors;
+const sdesc=x=>x.series==='color'?`顏色協調系列 · ${x.max_rounds} 題、每題 ${x.color?.k??'?'} 個顏色${x.color?.shuffle===false?' · 兩人同順序':''}${x.color?.feedback===false?' · 不顯示結果':''}`
+ :`真實狀態系列 · S = ${(x.states||[]).join('')} · ${x.max_rounds} 回合 · 每回合 ${x.seconds} 秒 · ${qdesc(x)}`;
 async function createSession(){try{
  el('createSession').disabled=true;
  const code=el('newcode').value.trim().toUpperCase();
  if(code&&!/^[A-Z0-9]{3,12}$/.test(code))throw Error('加入代碼請用 3–12 個英文字母或數字');
+ if(seriesSel()==='color'){if(!colorSpec.length)genColors();
+  const d=await rpc('live_session_create_color',{p_code:code||null,p_spec:colorSpec,p_shuffle:el('cshuffle').checked,p_feedback:el('cfeedback').checked,p_rule:el('crule').value});
+  history.replaceState({},'',`${BASE}?session=${d.session}&admin=${d.admin_token}`);await monitor(d.session,d.admin_token);return;}
  const st=readSettings(),c={p_code:code||null};sessionBot(st);let d=st.pool?await rpc('live_session_create_pool2',{...st.base,...c,...st.pool}):st.spec?await rpc('live_session_create_spec2',{...st.base,...c,...st.spec}):await rpc('live_session_create_v4',{...st.base,...c,...st.pairs});
  if(el('hideinfo').checked)await rpc('live_session_set_hide_info',{p_session:d.session,p_admin:d.admin_token,p_hide:true});
  const bm=sessionBot(st);if(bm)await rpc('live_session_set_bot',{p_session:d.session,p_admin:d.admin_token,p_bot:bm});
@@ -215,7 +236,7 @@ async function listSessions(){const pw=el('adminpw').value;if(!pw){msg('請輸�
    const code=document.createElement('div');code.className='scode';code.textContent=x.code||'—';
    const info=document.createElement('div');info.className='muted';
    const when=new Date(x.created_at).toLocaleString('zh-TW',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
-   info.textContent=`${when} 建立 · S = ${x.states.join('')} · ${x.max_rounds} 回合 · 每回合 ${x.seconds} 秒 · ${qdesc(x)}${x.hide_info?' · 不顯示狀態資訊':''} · 進行中 ${x.active} 組／共 ${x.games} 組`;
+   info.textContent=`${when} 建立 · ${sdesc(x)}${x.hide_info?' · 不顯示狀態資訊':''} · 進行中 ${x.active} 組／共 ${x.games} 組`;
    const ctl=document.createElement('div');ctl.className='controls';
    const mon=document.createElement('button');mon.textContent='監看頁';mon.onclick=()=>{window.location.href=`${BASE}?session=${x.session}&admin=${x.admin_token}`};
    const close=document.createElement('button');close.textContent='關閉場次';close.onclick=()=>adminClose(x.session,false,close);
@@ -255,12 +276,12 @@ async function listClosed(more){const pw=el('adminpw').value;if(!pw){msg('請輸
    const code=document.createElement('div');code.className='scode';code.textContent=x.code||'—';
    const info=document.createElement('div');info.className='muted';
    const when=new Date(x.created_at).toLocaleString('zh-TW',{year:'numeric',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
-   info.textContent=`${when} 建立 · S = ${x.states.join('')} · ${x.max_rounds} 回合 · 每回合 ${x.seconds} 秒 · ${qdesc(x)}${x.hide_info?' · 不顯示狀態資訊':''} · ${x.games} 組、玩了 ${x.rounds_played} 回合、${x.clicks} 次點擊`;
+   info.textContent=`${when} 建立 · ${sdesc(x)}${x.hide_info?' · 不顯示狀態資訊':''} · ${x.games} 組、玩了 ${x.rounds_played} 回合、${x.clicks} 次點擊`;
    const ctl=document.createElement('div');ctl.className='controls';
    const mon=document.createElement('button');mon.textContent='監看頁';mon.onclick=()=>{window.location.href=`${BASE}?session=${x.session}&admin=${x.admin_token}`};
    const dl=document.createElement('button');dl.textContent='下載資料（CSV）';
    const links=document.createElement('div');links.className='muted';
-   dl.onclick=()=>exportSession(x.session,x.admin_token,dl,links);
+   dl.onclick=()=>exportSession(x.session,x.admin_token,dl,links,x.series);
    ctl.append(mon,dl);row.append(code,info,ctl,links);return row;});
   const extra=[];
   if(d.total>d.sessions.length&&closedLimit<200){const b=document.createElement('button');b.textContent='再多顯示 30 場';b.style.marginTop='10px';
@@ -271,14 +292,15 @@ async function listClosed(more){const pw=el('adminpw').value;if(!pw){msg('請輸
 // ---------- experimenter: download a session's data as two CSV files (same columns as queries 14 and 12) ----------
 const csvCell=v=>{if(v===null||v===undefined)return '';const t=String(v);return /[",\n\r]/.test(t)?'"'+t.replace(/"/g,'""')+'"':t};
 const toCsv=t=>'\ufeff'+[t.cols,...t.rows].map(r=>r.map(csvCell).join(',')).join('\r\n')+'\r\n';
-async function exportSession(sid,adm,btn=el('exportBtn'),out=el('exportLinks')){btn.disabled=true;
- try{const d=await rpc('live_session_export',{p_session:sid,p_admin:adm});
+let monSeries='state';
+async function exportSession(sid,adm,btn=el('exportBtn'),out=el('exportLinks'),series=monSeries){btn.disabled=true;
+ try{const col=series==='color',d=await rpc(col?'live_color_export':'live_session_export',{p_session:sid,p_admin:adm});
   const base=`${d.code||sid.slice(0,8)}_${d.created_at}`;
-  const files=[[`${base}_rounds.csv`,toCsv(d.rounds),'每回合資料'],[`${base}_clicks.csv`,toCsv(d.clicks),'點擊紀錄']];
+  const files=col?[[`${base}_colors.csv`,toCsv(d.colors),'每題資料']]:[[`${base}_rounds.csv`,toCsv(d.rounds),'每回合資料'],[`${base}_clicks.csv`,toCsv(d.clicks),'點擊紀錄']];
   const links=files.map(([name,text,label])=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));a.download=name;a.textContent=`${label}（${name}）`;return a});
   for(const a of links){a.click();await new Promise(r=>setTimeout(r,400));}
-  const p=document.createElement('p');p.textContent=`已下載：${d.rounds.rows.length} 筆回合、${d.clicks.rows.length} 筆點擊。如果只下載到一個檔，請按：`;
-  out.replaceChildren(p,links[0],document.createTextNode('　'),links[1]);
+  const p=document.createElement('p');p.textContent=col?`已下載：${d.colors.rows.length} 筆題目資料。沒有自動下載的話，請按：`:`已下載：${d.rounds.rows.length} 筆回合、${d.clicks.rows.length} 筆點擊。如果只下載到一個檔，請按：`;
+  out.replaceChildren(p,...links.flatMap((a,i)=>i?[document.createTextNode('　'),a]:[a]));
  }catch(e){msg(e.message==='Access denied'?'沒有權限下載這個場次的資料。':e.message)}finally{btn.disabled=false}}
 
 // ---------- experimenter monitor ----------
@@ -288,15 +310,15 @@ async function monitor(sid,adm){
  el('sessionurl').value=`${BASE}?session=${sid}`;
  const ago=s=>s==null?'—':(s<60?`${s} 秒前`:`${Math.round(s/60)} 分前`);
  async function poll(){try{const v=await rpc('live_session_view',{p_session:sid,p_admin:adm});
-  el('sessioncode').textContent=v.code||'—';showQR(el('sessionurl').value,v.code);
-  el('sessioninfo').textContent=`S = ${v.states.join('')} · ${v.max_rounds} 回合 · 每回合 ${v.seconds} 秒 · ${qdesc(v)}${v.hide_info?' · 不顯示狀態資訊':''} · 場次${v.status==='open'?'開放中':'已關閉'}`;
+  el('sessioncode').textContent=v.code||'—';monSeries=v.series||'state';showQR(el('sessionurl').value,v.code);
+  el('sessioninfo').textContent=`${sdesc(v)}${v.hide_info?' · 不顯示狀態資訊':''} · 場次${v.status==='open'?'開放中':'已關閉'}`;
   let w=0,p=0,d=0;const rows=v.games.map(g=>{const st=g.finished?'已完成':(statusName[g.status]||g.status);
    if(g.status==='matching')w++;else if(g.finished)d++;else if(['waiting','ready','playing'].includes(g.status))p++;
    const tr=document.createElement('tr');[g.room,st,`${g.round} / ${g.max_rounds}`,`${ago(g.p1_seen_s)}／${v.bot?'電腦':ago(g.p2_seen_s)}`].forEach(x=>{const td=document.createElement('td');td.textContent=x;tr.append(td)});return tr;});
   el('gamesTable').replaceChildren(...rows);el('nWaiting').textContent=w;el('nPlaying').textContent=p;el('nDone').textContent=d;
   el('closeSession').disabled=v.status!=='open';msg('');
  }catch(e){msg(e.message)}}
- el('exportBtn').onclick=()=>exportSession(sid,adm);
+ el('exportBtn').onclick=()=>exportSession(sid,adm,undefined,undefined,monSeries);
  el('closeSession').onclick=async()=>{try{await rpc('live_session_close',{p_session:sid,p_admin:adm,p_stop_games:false});await poll()}catch(e){msg(e.message)}};
  let armed=null;el('stopSession').onclick=async()=>{const b=el('stopSession');
   if(!armed){b.textContent='再按一次確認停止全部';b.classList.add('armed');armed=setTimeout(()=>{armed=null;b.textContent='停止所有組並關閉場次';b.classList.remove('armed')},3000);return;}
@@ -443,7 +465,7 @@ function render(){
   setTimeout(()=>void refresh(),Math.max(0,game.started_ms+1050-(Date.now()+clockOffset)));}
 }
 let openKey=null;
-async function refresh(){if(!room||!token)return;if(loading){pending=true;return;}loading=true;
+async function refresh(){if(!room||!token)return;if(colorMode)return colorRefresh();if(loading){pending=true;return;}loading=true;
  try{let before=Date.now(),data=await rpc('live_view_v2',credentials()),after=Date.now();clockOffset=data.server_ms-(before+after)/2;
  data._fetchedAt=before;game=data;render();msg('');}
  catch(e){msg(e.message)}finally{loading=false;if(pending){pending=false;void refresh()}}}
@@ -467,8 +489,53 @@ function onPick(p){if(!game||!p||p.seat===game.player||p.round!==game.round||!(g
  oppLive={choice:p.choice,round:p.round,at:Date.now()};render();
  clearTimeout(reconcileT);reconcileT=setTimeout(()=>void refresh(),1200);}
 async function action(fn){try{await rpc(fn,credentials());await refresh()}catch(e){msg(e.message)}}
-async function enter(){el('setup').classList.add('hide');el('joinbox').classList.add('hide');el('game').classList.remove('hide');await refresh();if(!game)return;
- if(game.player===1&&!game.session){el('host').classList.remove('hide');let link=null;try{link=sessionStorage.getItem('guest_'+room)}catch{}if(link){el('invite').classList.remove('hide');el('guesturl').value=link}}
+// ---------- 顏色協調 series: participant screen (v44) ----------
+let colorMode=false,cview=null,cpick=null,cpickKey='',cnextKey=null,cloading=false,csending=false;
+const cerr={'Wait for Player 1':'請等對手先選。','Already chosen':'這一題你已經選過了。','Choice not accepted':'這個選擇沒有被記錄，請再試一次。'};
+async function colorRefresh(){if(cloading)return;cloading=true;
+ try{const b=Date.now(),v=await rpc('live_color_view',credentials()),a=Date.now();clockOffset=v.server_ms-(b+a)/2;cview=v;colorRender();if(!csending)msg('');}
+ catch(e){msg(e.message)}finally{cloading=false}}
+function colorRender(){const v=cview;if(!v)return;
+ const waiting=v.status==='matching',expired=v.status==='expired';if(expired&&sessionId)store.del('seat_'+sessionId);
+ el('expiredcard').classList.toggle('hide',!expired);el('waitcard').classList.toggle('hide',!waiting);el('gamebody').classList.add('hide');el('game').classList.remove('hide');
+ const box=el('colorbody');box.classList.toggle('hide',waiting||expired);if(waiting||expired)return;
+ const mk=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e};
+ const card=(...k)=>{const c=mk('section','card');c.append(...k.filter(Boolean));return c};
+ const chip=h=>{const c=mk('span','cchip');c.style.background=h;return c};
+ function resultCard(){const p=mk('div','pair');
+  const side=(t,h)=>{const d=mk('div');d.append(mk('span','muted',t),mk('br'),chip(h||'#ffffff'));return d};
+  p.append(side('你選了',v.my_color),side('對手選了',v.opponent_color));
+  return card(mk('h2','',v.match?'選到同一個顏色：你們都得 1 分':'選到不同的顏色：你們都得 0 分'),p,mk('p','muted',`到目前為止 ${v.played} 題中，選到同一個顏色 ${v.score} 題。`));}
+ if(cpickKey!==String(v.round)){cpickKey=String(v.round);cpick=null;}
+ const me=v.player,myTurn=!v.finished&&v.my_choice==null&&v.stage===(me===1?'p1':'p2');
+ const away=v.opponent_seen_ago_ms!=null&&v.opponent_seen_ago_ms>15000&&!v.finished;
+ const out=[card(mk('b','','Player '+me),mk('p','muted',`第 ${v.round} 題 / ${v.max_rounds}`),away?mk('p','muted','⚠ 對手可能已離線'):null)];
+ if(v.finished){
+  if(v.stage==='done'&&v.feedback)out.push(resultCard());
+  const end=card(mk('h2','','實驗已結束'),mk('p','muted',v.feedback&&v.played!=null?`謝謝參與！${v.played} 題中，你們選到同一個顏色 ${v.score} 題。所有紀錄都已保存。`:'謝謝參與！所有紀錄都已保存。'));
+  const hb=mk('button','main','回到首頁');hb.onclick=goHome;end.append(hb);end.style.border='2px solid #223149';out.push(end);
+  box.replaceChildren(...out);return;}
+ const pal=mk('div','cpal');pal.style.gridTemplateColumns=`repeat(${(v.colors||[]).length},minmax(0,1fr))`;
+ (v.colors||[]).forEach((h,i)=>{const b=mk('button');b.type='button';b.style.background=h;b.setAttribute('aria-label',`第 ${i+1} 個顏色`);
+  if(v.my_choice!=null?v.my_choice===i+1:cpick===i+1)b.classList.add('picked');b.disabled=!myTurn||csending;b.onclick=()=>{cpick=i+1;colorRender()};pal.append(b)});
+ const lead=v.stage==='p1'?(me===1?'請選一個顏色。對手會看到同樣的顏色（位置可能不同），但不會知道你選了哪一個。':'對手正在選顏色，請稍候。對手選好之後輪到你。')
+  :v.stage==='p2'?(me===1?'你已經選好了（框起來的那個）。請等對手選。':'對手已經選好了一個顏色，你看不到他選了哪一個。請你也選一個。'):'這一題結束了。';
+ const main=card(mk('h2','','選擇顏色'),mk('p','lead',lead),pal);
+ if(myTurn){const ok=mk('button','main','確定');ok.disabled=cpick==null||csending;
+  ok.onclick=async()=>{csending=true;colorRender();try{await rpc('live_color_choose',{...credentials(),p_pos:cpick});msg('')}catch(e){msg(cerr[e.message]||e.message)}finally{csending=false;void colorRefresh()}};main.append(ok);}
+ out.push(main);
+ if(v.stage==='done'){const rc=v.feedback?resultCard():card(mk('p','muted','這個場次不顯示每題的結果。'));const nx=mk('p','muted','');nx.id='cnext';rc.append(nx);out.push(rc);}
+ out.push(card(mk('h2','','得分規則'),mk('p','crule',v.rule||'')));
+ box.replaceChildren(...out);}
+// a few seconds after both have chosen, either page starts the next question
+setInterval(()=>{if(!colorMode||!cview)return;const v=cview;if(v.stage!=='done'||v.finished||!v.done_ms)return;
+ const left=v.done_ms+(v.feedback?5000:1500)-(Date.now()+clockOffset),t=document.getElementById('cnext');
+ if(t)t.textContent=left>0?`下一題 ${Math.ceil(left/1000)} 秒後開始`:'準備下一題…';
+ if(left<=0&&cnextKey!==v.round){const k=v.round;cnextKey=k;rpc('live_color_next',{...credentials(),p_round:k}).then(()=>colorRefresh()).catch(()=>setTimeout(()=>{if(cnextKey===k)cnextKey=null},1500));}},250);
+setInterval(()=>{if(colorMode&&room&&token&&!document.hidden)void colorRefresh()},1500);   // waiting for the partner / the other player's choice
+async function enter(){el('setup').classList.add('hide');el('joinbox').classList.add('hide');el('game').classList.remove('hide');try{const v=await rpc('live_color_view',credentials());colorMode=!!v&&v.series==='color'}catch{}
+ await refresh();if(!game&&!colorMode)return;
+ if(!colorMode&&game.player===1&&!game.session){el('host').classList.remove('hide');let link=null;try{link=sessionStorage.getItem('guest_'+room)}catch{}if(link){el('invite').classList.remove('hide');el('guesturl').value=link}}
  channel=db.channel('aumann:'+room,{config:{private:false,broadcast:{self:false}}});
  channel.on('broadcast',{event:'changed'},()=>void refresh()).on('broadcast',{event:'pick'},m=>onPick(m?.payload)).subscribe(status=>{el('waitconn').textContent='連線：'+status;if(status==='SUBSCRIBED')void refresh()});
 }
