@@ -29,7 +29,7 @@
 <section id="host" class="card hide"><h2>Player 1 控制</h2><div id="invite" class="hide"><label>Player 2 專屬網址</label><input id="guesturl" readonly><button id="copy">複製 Player 2 連結</button></div><div class="controls" style="margin-top:12px"><button class="main" id="prepare">準備下一回合</button><button class="main" id="start">雙方 Ready，開始計時</button><button class="danger" id="stop">停止實驗</button></div></section>
 </div></div>
 <p id="message" class="warn"></p>
-<div id="plotpanel" class="plotpanel hide" role="dialog" aria-modal="true" aria-labelledby="plottitle"><div class="plotinner"><div class="plothead"><h2 id="plottitle">製作 plot</h2><button id="plotclose" type="button">關閉</button></div><div class="controls"><select id="plotgroup" aria-label="組別"></select><button id="plotall" type="button">下載這些圖（PNG）</button><button id="plotnash" type="button" class="hide">下載 Nash 均衡分析表（CSV）</button></div><p class="muted">圖在瀏覽器裡畫，資料不會上傳到別的地方。真實狀態系列每一回合一張；顏色協調、報酬設計每一組一張。和 pair_plots.py 畫的一樣；正在進行中的場次，畫的是到目前為止的資料。</p><div id="plotlist"></div></div></div>
+<div id="plotpanel" class="plotpanel hide" role="dialog" aria-modal="true" aria-labelledby="plottitle"><div class="plotinner"><div class="plothead"><h2 id="plottitle">製作 plot</h2><button id="plotclose" type="button">關閉</button></div><div class="controls"><select id="plotgroup" aria-label="組別"></select><button id="plotall" type="button">下載這些圖（PNG）</button><button id="plotnash" type="button" class="hide">下載 Nash 均衡分析表（CSV）</button></div><p class="muted">圖在瀏覽器裡畫，資料不會上傳到別的地方。真實狀態系列每一回合一張（上面寫出兩人各自看到的資訊、題目和對手題目的告知）；顏色協調、報酬設計每一組一張。和 pair_plots.py 畫的一樣；正在進行中的場次，畫的是到目前為止的資料。</p><div id="plotlist"></div></div></div>
 <div id="qrfull" class="qrfull hide"><div class="muted">掃描加入，或輸入代碼</div><div id="qrfullcode" class="big">—</div><div id="qrfullimg"></div><div class="muted">點任何地方關閉</div></div>
 <script type="module">
 import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm';
@@ -379,7 +379,7 @@ const plText=(x,y,s,o={})=>`<text x="${x}" y="${y}" font-size="${o.size||14}" fi
 const plLine=(x1,y1,x2,y2,c,w=1,dash)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''}/>`;
 const plRect=(x,y,w,h,f,o='')=>`<rect x="${x}" y="${y}" width="${Math.max(0,w)}" height="${Math.max(0,h)}" fill="${f}" ${o}/>`;
 const plVLabel=(x,y,s)=>`<text transform="translate(${x},${y}) rotate(-90)" font-size="13" fill="${PL.MUTED}" text-anchor="middle">${plEsc(s)}</text>`;
-const plSvg=body=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PL.W} ${PL.H}" width="${PL.W}" height="${PL.H}" font-family="${PL.FONT}"><rect width="${PL.W}" height="${PL.H}" fill="#ffffff"/>${body}</svg>`;
+const plSvg=(body,h=PL.H)=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PL.W} ${h}" width="${PL.W}" height="${h}" font-family="${PL.FONT}"><rect width="${PL.W}" height="${h}" fill="#ffffff"/>${body}</svg>`;
 const plTable=t=>t.rows.map(r=>Object.fromEntries(t.cols.map((c,i)=>[c,r[i]])));
 const plTrue=v=>v===true||['true','t','1','yes'].includes(String(v).toLowerCase());
 const plNum=v=>v===null||v===undefined||v===''?null:Number(v);
@@ -423,25 +423,52 @@ function plLoadState(d){const games=new Map();
  for(const row of plTable(d.rounds)){const r={group:row['組別'],no:Number(row['回合']),total:plNum(row['總回合數']),q1:Number(row['p1題目']),q2:Number(row['p2題目']),
    truth:String(row['真實狀態']||'').trim(),info1:[...String(row['p1資訊']||'').trim()],info2:[...String(row['p2資訊']||'').trim()],
    seconds:Number(row['秒數']||30),stop:plNum(row['停止於秒']),hide:plTrue(row['不顯示狀態']),design:plNum(row['題組第幾組']),
-   states:row['狀態集合']?[...String(row['狀態集合']).trim()]:null,shift:Number(row['計分加分']||0),clicks:[]};
+   states:row['狀態集合']?[...String(row['狀態集合']).trim()]:null,shift:Number(row['計分加分']||0),clicks:[],
+   cand1:plCands(row['p1候選'],row['p1題目']),cand2:plCands(row['p2候選'],row['p2題目']),frame1:String(row['p1呈現']||'positive').trim(),frame2:String(row['p2呈現']||'positive').trim(),
+   show1:row['告知P1']==null||row['告知P1']===''?true:plTrue(row['告知P1']),show2:row['告知P2']==null||row['告知P2']===''?true:plTrue(row['告知P2'])};
   if(!games.has(r.group))games.set(r.group,new Map());games.get(r.group).set(r.no,r)}
  plTable(d.clicks).forEach((row,k)=>{const g=games.get(row['組別']),r=g&&g.get(Number(row['回合']));if(r)r.clicks.push({t:Math.max(0,Number(row['開始後秒數'])),k,p:Number(row['玩家']),c:String(row['選擇']).trim()})});
  for(const [g,rs] of games){const seen=new Set();for(const r of rs.values()){[...r.info1,...r.info2,r.truth,...r.clicks.map(c=>c.c)].forEach(s=>s&&seen.add(s))}
   const total=Math.max(0,...[...rs.values()].map(r=>r.total||0),...rs.keys());
-  for(const r of rs.values()){r.states=r.states||[...seen].sort();r.total=r.total||total;r.clicks.sort((a,b)=>a.t-b.t||a.k-b.k);r.scores=plScore(r)}}
+  const mixed=[...rs.values()].some(r=>r.q1!==r.q2||r.cand1.length>1||r.cand2.length>1||r.cand1.join()!==r.cand2.join());   // as the participant page
+  for(const r of rs.values()){r.mixed=mixed;r.states=r.states||[...seen].sort();r.total=r.total||total;r.clicks.sort((a,b)=>a.t-b.t||a.k-b.k);r.scores=plScore(r)}}
  return games}
 function plSameSpans(r){const times=[...new Set([0,r.seconds,...r.clicks.filter(c=>c.t<=r.seconds).map(c=>c.t)])].sort((a,b)=>a-b),spans=[];
  for(let i=0;i<times.length-1;i++){const a=plChoiceAt(r.clicks,1,times[i]),b=plChoiceAt(r.clicks,2,times[i]);
   if(a!=null&&a===b){if(spans.length&&Math.abs(spans[spans.length-1][1]-times[i])<1e-9)spans[spans.length-1][1]=times[i+1];else spans.push([times[i],times[i+1]])}}
  return spans}
-const plShort=(q,shift)=>{const t=(questions[q]||['Q'+q])[0];return t.includes('：')?t.split('：')[1]:t};
+const plCands=(v,q)=>{const a=(Array.isArray(v)?v:String(v??'').split(/[|,]/)).map(x=>Number(String(x).trim())).filter(n=>n);return a.length?a:[Number(q)]};
+// wording before v43 (rounds with 計分加分 = 0) of the same/different questions; the other questions did not change
+const PL_OLD={"11": "每一秒結束時，若你和對手目前選擇相同，你得 1 分，對手得 0 分；否則雙方都得 0 分。", "12": "每一秒結束時，若你和對手目前選擇相同，你被扣 1 分，對手得 0 分；否則雙方都得 0 分。", "13": "每一秒結束時，若你和對手目前選擇相同，你得 1 分，對手得 1 分；否則雙方都得 0 分。", "14": "每一秒結束時，若你和對手目前選擇相同，你得 1 分，對手被扣 1 分；否則雙方都得 0 分。", "15": "每一秒結束時，若你和對手目前選擇相同，你得 0 分，對手得 1 分；否則雙方都得 0 分。", "16": "每一秒結束時，若你和對手目前選擇相同，你得 0 分，對手被扣 1 分；否則雙方都得 0 分。", "20": "每一秒結束時，若你和對手目前選擇相同，你得 1 分；否則你得 0 分。", "21": "每一秒結束時，若你和對手目前選擇不同，你得 1 分；否則你得 0 分。", "22": "每一秒結束時，若你和對手目前選擇不同，你得 1 分，對手得 1 分；否則雙方都得 0 分。", "23": "每一秒結束時，若你和對手目前選擇不同，你被扣 1 分，對手被扣 1 分；否則雙方都得 0 分。", "24": "每一秒結束時，若你和對手目前選擇不同，你得 1 分，對手被扣 1 分；否則雙方都得 0 分。", "25": "每一秒結束時，若你和對手目前選擇不同，你被扣 1 分，對手得 1 分；否則雙方都得 0 分。", "43": "每一秒結束時，若你和對手目前選擇相同，你得 1 分，對手得 1 分；若你和對手目前選擇不同，你得 1 分，對手被扣 1 分。", "44": "每一秒結束時，若你和對手目前選擇相同，你得 1 分，對手被扣 1 分；若你和對手目前選擇不同，你得 1 分，對手得 1 分。", "45": "每一秒結束時，若你和對手目前選擇相同，你得 0 分，對手得 1 分；若你和對手目前選擇不同，你得 0 分，對手被扣 1 分。", "46": "每一秒結束時，若你和對手目前選擇相同，你得 0 分，對手被扣 1 分；若你和對手目前選擇不同，你得 0 分，對手得 1 分。"};
+// what player p saw this round (same rules as the participant page): own rule, what he was told about the opponent, the information line
+function plScreen(r,p){const q=p===1?r.q1:r.q2,opts=(p===1?r.show1:r.show2)?(p===1?r.cand2:r.cand1):[],roundSame=opts.length===1&&opts[0]===q;
+ const rule=(r.mixed&&!roundSame&&mixedRules[q])||(!r.shift&&PL_OLD[q])||(questions[q]||['',''])[1];
+ let notice=null;if(!r.hide){const info=p===1?r.info1:r.info2,fr=p===1?r.frame1:r.frame2,head=`真實狀態有 ${r.states.join('、')}。`;
+  if(fr==='negative'){const ex=r.states.filter(s=>!info.includes(s));notice=head+(ex.length?`你知道真實狀態一定不在 ${ex.join('、')} 之中。`:'你沒有關於真實狀態的額外資訊。')}
+  else notice=head+`你知道真實狀態在 ${info.join('、')} 之中。`}
+ return {q,opts,cands:p===1?r.cand1:r.cand2,sameQ:roundSame&&[1,2,3].includes(q),rule,notice}}
+let plCtx=null;const plMeasure=(t,size)=>{plCtx=plCtx||document.createElement('canvas').getContext('2d');plCtx.font=`${size}px ${PL.FONT}`;return plCtx.measureText(t).width};
+function plWrap(text,size,width){const toks=text.match(/[A-Za-z0-9.+\-\/|]+|\s|./gu)||[''],lines=[];let cur='';
+ for(const tk of toks){if(cur&&!'。，、；：）」』！？,.;:)'.includes(tk)&&plMeasure(cur+tk,size)>width){lines.push(cur.trimEnd());cur=tk.trimStart()}else cur+=tk}   // punctuation never starts a line
+ if(cur.trim())lines.push(cur.trimEnd());return lines.length?lines:['']}
+// the two cards at the top of a 真實狀態 plot: information, own rule, what each was told about the opponent's question
+function plCards(r,top,bottom){let b='';const gap=20,L=64,R=1242,cw=(R-L-gap)/2,labW=84;
+ for(const p of [1,2]){const it=plScreen(r,p),x0=L+(p-1)*(cw+gap),col=p===1?PL.BLUE:PL.ORANGE;
+  b+=`<rect x="${x0}" y="${top}" width="${cw}" height="${bottom-top}" rx="12" fill="#ffffff" stroke="${col}" stroke-width="2"/>`;
+  b+=plText(x0+16,top+30,`Player ${p}　Q${it.q}`+(it.cands.length>1?`（從 ${it.cands.map(n=>'Q'+n).join('、')} 抽出）`:''),{size:18,fill:col,weight:700});
+  const opp=it.sameQ?'和你的題目相同（只顯示一張卡片）':!it.opts.length?'沒有告知對手的題目':it.opts.length===1?`告知是 Q${it.opts[0]}`:`告知是 ${it.opts.map(n=>'Q'+n).join('、')} 其中之一`;
+  const rows=[['資訊',it.notice||'本回合不顯示真實狀態和私有資訊'],['題目',it.rule],['對手題目',opp]];
+  let size=16,wr,lh;for(size of [16,15.5,15,14.5,14,13.5,13,12.5,12,11.5,11]){wr=rows.map(([l,t])=>[l,plWrap(t,size,cw-32-labW)]);lh=size*1.5;
+   if(wr.reduce((n,[,ls])=>n+ls.length,0)*lh+(rows.length-1)*lh*0.35<=bottom-top-62)break}
+  let y=top+56;for(const [l,ls] of wr){b+=plText(x0+16,y,l,{size:size-1,fill:PL.MUTED,base:'hanging'});for(const ln of ls){b+=plText(x0+16+labW,y,ln,{size,base:'hanging'});y+=lh}y+=lh*0.35}}
+ return b}
 function plStateRound(r){const T=r.seconds,S=r.states,X0=90,X1=1240,xs=t=>X0+(X1-X0)*t/T;
- const A0=165,A1=470,rowH=(A1-A0)/S.length,yc=s=>A0+rowH*(S.indexOf(s)+0.5);let b='';
+ const DY=240,A0=165+DY,A1=470+DY,rowH=(A1-A0)/S.length,yc=s=>A0+rowH*(S.indexOf(s)+0.5);let b='';
  b+=plText(70,44,`組別 ${r.group}　Round ${r.no} / ${r.total}${r.design?`　題組第 ${r.design} 組`:''}　${r.hide?'本回合不顯示狀態資訊':'真實狀態 '+r.truth}`,{size:24});
- b+=plText(70,76,`P1：Q${r.q1} ${plShort(r.q1,r.shift)}　　P2：Q${r.q2} ${plShort(r.q2,r.shift)}`,{size:15,fill:PL.MUTED});
+ b+=plCards(r,66,330);   // what each player saw: information, own rule, what he was told about the opponent
  // legend
- b+=plLine(70,112,104,112,PL.BLUE,4)+plText(112,117,`P1（Q${r.q1}）`,{size:14})+plLine(240,112,274,112,PL.ORANGE,4)+plText(282,117,`P2（Q${r.q2}）`,{size:14})
-   +plRect(410,104,30,16,PL.GRAY,'opacity="0.4"')+plText(448,117,'兩人選擇相同',{size:14});
+ b+=plLine(70,112+DY,104,112+DY,PL.BLUE,4)+plText(112,117+DY,`P1（Q${r.q1}）`,{size:14})+plLine(240,112+DY,274,112+DY,PL.ORANGE,4)+plText(282,117+DY,`P2（Q${r.q2}）`,{size:14})
+   +plRect(410,104+DY,30,16,PL.GRAY,'opacity="0.4"')+plText(448,117+DY,'兩人選擇相同',{size:14});
  if(!r.hide&&S.includes(r.truth)){b+=plRect(X0,yc(r.truth)-rowH*0.33,X1-X0,rowH*0.66,'#16a34a','opacity="0.13"');b+=plText(X1,yc(r.truth)-rowH*0.36,'真實狀態',{size:12,fill:PL.GREEN,anchor:'end'})}
  for(const [t0,t1] of plSameSpans(r))b+=plRect(xs(t0),A0,xs(t1)-xs(t0),A1-A0,'#9ca3af','opacity="0.22"');
  for(const s of S){b+=plLine(X0,yc(s),X1,yc(s),'#e3e5ea',1);b+=plText(X0-14,yc(s),s,{size:17,anchor:'end',base:'central'})}
@@ -453,7 +480,7 @@ function plStateRound(r){const T=r.seconds,S=r.states,X0=90,X1=1240,xs=t=>X0+(X1
   for(const k of cl)if(S.includes(k.c))b+=`<circle cx="${xs(k.t)}" cy="${yc(k.c)+off*rowH}" r="4" fill="${c}"/>`}
  if(r.stop!=null&&r.stop<T){b+=plRect(xs(r.stop),A0,X1-xs(r.stop),A1-A0,'#ffffff','opacity="0.85"');b+=plText(xs(r.stop)+6,A0+16,'中途停止',{size:13,fill:PL.RED})}
  // cumulative scores
- const B0=530,B1=665;const c1=[0],c2=[0];r.scores.forEach(([,a,bb])=>{c1.push(c1[c1.length-1]+a);c2.push(c2[c2.length-1]+bb)});
+ const B0=530+DY,B1=665+DY;const c1=[0],c2=[0];r.scores.forEach(([,a,bb])=>{c1.push(c1[c1.length-1]+a);c2.push(c2[c2.length-1]+bb)});
  let lo=Math.min(0,...c1,...c2),hi=Math.max(1,...c1,...c2);const pad=Math.max(1,(hi-lo)*0.12);lo-=pad;hi+=pad;const ys=v=>B1-(B1-B0)*(v-lo)/(hi-lo);
  for(const v of plTicks(lo,hi,4)){b+=plLine(X0,ys(v),X1,ys(v),v===0?'#c5c8d0':'#f0f1f4',1);b+=plText(X0-10,ys(v),v,{size:12,anchor:'end',base:'central',fill:PL.MUTED})}
  const step=arr=>arr.map((v,i)=>`${i?'H'+xs(i)+'V':'M'+xs(0)+','}${ys(v)}`).join('')+`H${xs(Math.min(T,arr.length-1))}`;
@@ -462,7 +489,7 @@ function plStateRound(r){const T=r.seconds,S=r.states,X0=90,X1=1240,xs=t=>X0+(X1
  b+=plVLabel(30,(B0+B1)/2,'累積得分');
  b+=plLine(X0,B1,X1,B1,'#20222a',1);for(const v of plTicks(0,T,12))b+=plLine(xs(v),B1,xs(v),B1+5,'#20222a',1)+plText(xs(v),B1+20,v,{size:12,anchor:'middle',fill:PL.MUTED});
  b+=plText((X0+X1)/2,B1+42,'秒',{size:13,anchor:'middle',fill:PL.MUTED});
- return plSvg(b)}
+ return plSvg(b,960)}
 
 // ----- 顏色協調 -----
 function plLoadColor(d){const games=new Map();
@@ -545,7 +572,7 @@ function plNashCsv(games){const cols=['組別','題','出題者','填好的表',
 
 // ----- the panel: pick a pair, see the charts, save PNG / the Nash table -----
 function plSaveSvg(svg,name){const img=new Image();const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml;charset=utf-8'}));
- img.onload=()=>{const c=document.createElement('canvas');c.width=PL.W*2;c.height=PL.H*2;const x=c.getContext('2d');x.scale(2,2);x.drawImage(img,0,0);URL.revokeObjectURL(url);
+ img.onload=()=>{const c=document.createElement('canvas');const h=Number((svg.match(/viewBox="0 0 \d+ (\d+)"/)||[0,PL.H])[1]);c.width=PL.W*2;c.height=h*2;const x=c.getContext('2d');x.scale(2,2);x.drawImage(img,0,0);URL.revokeObjectURL(url);
   c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.append(a);a.click();a.remove()},'image/png')};img.src=url}
 async function makePlots(sid,adm,series,btn){btn&&(btn.disabled=true);
  try{const pay=series==='payoff',col=series==='color';const d=await rpc(pay?'live_payoff_export':col?'live_color_export':'live_session_export',{p_session:sid,p_admin:adm});
