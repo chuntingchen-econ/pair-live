@@ -1,20 +1,21 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pair Live</title><style>
-:root{font-family:system-ui,-apple-system,sans-serif;color:#20222a;background:#f4f5f7}body{max-width:560px;margin:auto;padding:14px}h1{font-size:25px}h2{font-size:19px}.card{background:#fff;border-radius:14px;padding:17px;margin:12px 0;box-shadow:0 1px 5px #ddd}input{box-sizing:border-box;width:100%;padding:12px;font-size:17px;border:1px solid #c5c8d0;border-radius:8px}select{box-sizing:border-box;width:100%;padding:12px;font-size:16px;border:1px solid #c5c8d0;border-radius:8px;background:#fff;color:inherit;text-overflow:ellipsis}label{display:block;margin:10px 0 5px;font-weight:600}button{padding:13px;border:1px solid #bbb;border-radius:10px;font-size:16px;background:#fff;cursor:pointer}button.main{background:#223149;color:#fff;border-color:#223149}button.danger{border-color:#a23426;color:#a23426}button.danger.armed{background:#a23426;color:#fff}button:disabled{opacity:.35}button:active{transform:scale(.98)}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(62px,1fr));gap:9px}.choices button{font-size:22px;font-weight:650;touch-action:manipulation}.choices button,.oppbtn{color:#a3a8b2}.oppbtn{display:flex;align-items:center;justify-content:center;padding:13px;border:1px solid #bbb;border-radius:10px;font-size:22px;font-weight:650;background:#fff}.choices .picked{outline:3px solid #223149;color:#10131a;font-weight:800}.rowlabel{margin:14px 0 6px;color:#626b78;font-size:15px;font-weight:600}.big{font-size:30px;font-weight:700}.timer{font-size:44px;font-weight:700;font-variant-numeric:tabular-nums}.muted{color:#626b78}.hide{display:none}.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pair>div{background:#f1f2f5;border-radius:10px;padding:14px;text-align:center}.history{max-height:185px;overflow-y:auto;line-height:1.8}.warn{color:#a23426}.controls{display:flex;gap:10px;flex-wrap:wrap}#message{white-space:pre-wrap}#endcard{border:2px solid #223149}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:6px 4px;border-bottom:1px solid #e3e5ea}th{color:#626b78;font-weight:600}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.stats>div{background:#f1f2f5;border-radius:10px;padding:10px;text-align:center}.stats b{display:block;font-size:24px}#sessioncode{letter-spacing:.12em}.lead{font-size:18px;line-height:1.6;margin:14px 0 6px}#notice{font-size:18px;line-height:1.6;margin:6px 0}#timerule{font-size:21px;line-height:1.7;font-weight:500;margin:0}#rules{font-size:21px;line-height:1.7;font-weight:500;color:#20222a}#result{margin:10px 0 4px}.qbank{margin:14px 0 4px;border:1px solid #d5d8de;border-radius:10px;padding:10px 12px}.qbank summary{font-weight:600;cursor:pointer}.qbank table{margin-top:8px;font-size:14px}.qbank td{vertical-align:top;padding:6px 4px}.qbank td:first-child{font-weight:700;white-space:nowrap}.qbank .qnote{color:#626b78;font-size:13px;margin-top:2px}.modes label{display:flex;align-items:flex-start;gap:8px;margin:7px 0;font-weight:500;font-size:15px}.modes input{width:20px;height:20px;margin:1px 0 0;flex:none}.poollead{font-size:18px;margin:6px 0 2px}.oppgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:8px 0 6px}#readystatus{margin-bottom:8px}.oppbox{border:1.5px solid #c9ccd4;border-radius:10px;padding:12px 14px}.oppbox.single{border:0;padding:0}.oppbox b{display:block;font-size:16px;color:#626b78;margin-bottom:4px}.oppbox span{font-size:21px;line-height:1.7;font-weight:500;color:#20222a}.srow{border-top:1px solid #e3e5ea;padding:12px 0}#closedlist h3{margin:20px 0 4px;font-size:17px}.srow .scode{font-size:22px;font-weight:700;letter-spacing:.08em}.srow .controls{margin-top:8px}.srow button{padding:9px 12px;font-size:15px}.qpick{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin:4px 0}.qpick label{display:flex;align-items:center;gap:8px;margin:0;font-weight:500;font-size:15px}.qpick input{width:20px;height:20px;margin:0;flex:none}.qrbox{margin:12px 0 6px}.qrbox svg{width:220px;height:220px;display:block}.qrfull{position:fixed;inset:0;background:#fff;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer}.qrfull.hide{display:none}.qrfull svg{width:min(82vw,70vh);height:min(82vw,70vh);display:block}.qrfull .big{font-size:42px;letter-spacing:.12em}#result .pair b{display:block;font-size:32px;margin-top:4px;font-variant-numeric:tabular-nums}.clist{display:flex;flex-direction:column;gap:4px;max-height:260px;overflow:auto;border:1px solid #e3e5ea;border-radius:8px;padding:8px}.crow{display:flex;gap:6px;align-items:center;font-size:13px;color:#626b78}.crow i{display:inline-block;width:26px;height:26px;border-radius:6px;border:1px solid rgba(0,0,0,.2)}.cpal{display:grid;gap:10px;margin:8px 0}.cpal button{aspect-ratio:1;border-radius:12px;border:1px solid rgba(0,0,0,.18);padding:0}.cpal button.picked{outline:4px solid #223149;outline-offset:3px}.cpal button:disabled{cursor:default;opacity:1;transform:none}.cchip{display:inline-block;width:46px;height:46px;border-radius:10px;border:1px solid rgba(0,0,0,.18);vertical-align:middle}.crule{font-size:21px;line-height:1.7;font-weight:500;margin:0}#crule{box-sizing:border-box;width:100%;padding:10px;font:inherit;font-size:16px;border:1px solid #c5c8d0;border-radius:8px}.plist{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow:auto;border:1px solid #e3e5ea;border-radius:8px;padding:8px}.peditor{width:auto;font-size:13px}.peditor th{color:#626b78;font-weight:500;padding:3px 6px}.peditor td{padding:3px 6px;white-space:nowrap}.peditor input{width:3em;padding:4px;font-size:14px;text-align:center;margin:0 2px}.peditor input.p1{border-color:#2563eb;color:#2563eb}.peditor input.p2{border-color:#ea580c;color:#ea580c}.peditor input:placeholder-shown{background:#fff7e6}.peditor input.bad{background:#fde8e8}.pnums{display:flex;gap:10px;flex-wrap:wrap}.pnums label{display:flex;flex-direction:column;font-weight:500;font-size:14px;margin:0}.pnums input{width:6em}.pwrap{overflow-x:auto}.pmx{border-collapse:separate;border-spacing:6px;width:100%}.pmx th{font-size:14px;color:#626b78;font-weight:600;text-align:center}.pmx th button{padding:8px 10px;font-size:15px;white-space:nowrap}.pmx th button.pick,.pmx th.pmine{outline:3px solid #223149;color:#10131a}.pmx th.popp{color:#10131a;text-decoration:underline}.pmx td{background:#f1f2f5;border-radius:10px;padding:8px;min-width:96px;border:2px solid transparent}.pmx td.prow{background:#e7ecf5}.pmx td.pcol{border-color:#9aa4b2}.pmx td.phit{border-color:#223149;background:#dfe6f3}.pline{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:15px;line-height:1.8}.pline b{font-size:20px;font-variant-numeric:tabular-nums}.pline.mine b{color:#2563eb}.pline .plab{color:#626b78;font-size:13px;min-width:2.2em}.pline select{font-size:16px;padding:2px 4px;width:auto}.ptag{font-size:11px;color:#b45309;background:#fff3dc;border-radius:5px;padding:0 5px;white-space:nowrap}
+:root{font-family:system-ui,-apple-system,sans-serif;color:#20222a;background:#f4f5f7}body{max-width:560px;margin:auto;padding:14px}h1{font-size:25px}h2{font-size:19px}.card{background:#fff;border-radius:14px;padding:17px;margin:12px 0;box-shadow:0 1px 5px #ddd}input{box-sizing:border-box;width:100%;padding:12px;font-size:17px;border:1px solid #c5c8d0;border-radius:8px}select{box-sizing:border-box;width:100%;padding:12px;font-size:16px;border:1px solid #c5c8d0;border-radius:8px;background:#fff;color:inherit;text-overflow:ellipsis}label{display:block;margin:10px 0 5px;font-weight:600}button{padding:13px;border:1px solid #bbb;border-radius:10px;font-size:16px;background:#fff;cursor:pointer}button.main{background:#223149;color:#fff;border-color:#223149}button.danger{border-color:#a23426;color:#a23426}button.danger.armed{background:#a23426;color:#fff}button:disabled{opacity:.35}button:active{transform:scale(.98)}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(62px,1fr));gap:9px}.choices button{font-size:22px;font-weight:650;touch-action:manipulation}.choices button,.oppbtn{color:#a3a8b2}.oppbtn{display:flex;align-items:center;justify-content:center;padding:13px;border:1px solid #bbb;border-radius:10px;font-size:22px;font-weight:650;background:#fff}.choices .picked{outline:3px solid #223149;color:#10131a;font-weight:800}.rowlabel{margin:14px 0 6px;color:#626b78;font-size:15px;font-weight:600}.big{font-size:30px;font-weight:700}.timer{font-size:44px;font-weight:700;font-variant-numeric:tabular-nums}.muted{color:#626b78}.hide{display:none}.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pair>div{background:#f1f2f5;border-radius:10px;padding:14px;text-align:center}.history{max-height:185px;overflow-y:auto;line-height:1.8}.warn{color:#a23426}.controls{display:flex;gap:10px;flex-wrap:wrap}#message{white-space:pre-wrap}#endcard{border:2px solid #223149}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:6px 4px;border-bottom:1px solid #e3e5ea}th{color:#626b78;font-weight:600}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.stats>div{background:#f1f2f5;border-radius:10px;padding:10px;text-align:center}.stats b{display:block;font-size:24px}#sessioncode{letter-spacing:.12em}.lead{font-size:18px;line-height:1.6;margin:14px 0 6px}#notice{font-size:18px;line-height:1.6;margin:6px 0}#timerule{font-size:21px;line-height:1.7;font-weight:500;margin:0}#rules{font-size:21px;line-height:1.7;font-weight:500;color:#20222a}#result{margin:10px 0 4px}.qbank{margin:14px 0 4px;border:1px solid #d5d8de;border-radius:10px;padding:10px 12px}.qbank summary{font-weight:600;cursor:pointer}.qbank table{margin-top:8px;font-size:14px}.qbank td{vertical-align:top;padding:6px 4px}.qbank td:first-child{font-weight:700;white-space:nowrap}.qbank .qnote{color:#626b78;font-size:13px;margin-top:2px}.modes label{display:flex;align-items:flex-start;gap:8px;margin:7px 0;font-weight:500;font-size:15px}.modes input{width:20px;height:20px;margin:1px 0 0;flex:none}.poollead{font-size:18px;margin:6px 0 2px}.oppgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:8px 0 6px}#readystatus{margin-bottom:8px}.oppbox{border:1.5px solid #c9ccd4;border-radius:10px;padding:12px 14px}.oppbox.single{border:0;padding:0}.oppbox b{display:block;font-size:16px;color:#626b78;margin-bottom:4px}.oppbox span{font-size:21px;line-height:1.7;font-weight:500;color:#20222a}.srow{border-top:1px solid #e3e5ea;padding:12px 0}#closedlist h3{margin:20px 0 4px;font-size:17px}.srow .scode{font-size:22px;font-weight:700;letter-spacing:.08em}.srow .controls{margin-top:8px}.srow button{padding:9px 12px;font-size:15px}.qpick{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin:4px 0}.qpick label{display:flex;align-items:center;gap:8px;margin:0;font-weight:500;font-size:15px}.qpick input{width:20px;height:20px;margin:0;flex:none}.qrbox{margin:12px 0 6px}.qrbox svg{width:220px;height:220px;display:block}.qrfull{position:fixed;inset:0;background:#fff;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer}.qrfull.hide{display:none}.qrfull svg{width:min(82vw,70vh);height:min(82vw,70vh);display:block}.qrfull .big{font-size:42px;letter-spacing:.12em}#result .pair b{display:block;font-size:32px;margin-top:4px;font-variant-numeric:tabular-nums}.clist{display:flex;flex-direction:column;gap:4px;max-height:260px;overflow:auto;border:1px solid #e3e5ea;border-radius:8px;padding:8px}.crow{display:flex;gap:6px;align-items:center;font-size:13px;color:#626b78}.crow i{display:inline-block;width:26px;height:26px;border-radius:6px;border:1px solid rgba(0,0,0,.2)}.cpal{display:grid;gap:10px;margin:8px 0}.cpal button{aspect-ratio:1;border-radius:12px;border:1px solid rgba(0,0,0,.18);padding:0}.cpal button.picked{outline:4px solid #223149;outline-offset:3px}.cpal button:disabled{cursor:default;opacity:1;transform:none}.cchip{display:inline-block;width:46px;height:46px;border-radius:10px;border:1px solid rgba(0,0,0,.18);vertical-align:middle}.crule{font-size:21px;line-height:1.7;font-weight:500;margin:0}.plotpanel{position:fixed;inset:0;z-index:60;background:rgba(16,19,26,.55);overflow-y:auto;padding:16px}.plotpanel.hide{display:none}.plotinner{max-width:1100px;margin:0 auto;background:#fff;border-radius:14px;padding:18px}.plothead{display:flex;justify-content:space-between;align-items:center;gap:10px}.plothead h2{margin:0}#plotgroup{width:auto;max-width:100%}.plotfig{margin:16px 0 0}.plotfig figcaption{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:600;margin-bottom:6px}.plotfig figcaption button{padding:7px 12px;font-size:14px}.plotsvg svg{width:100%;height:auto;display:block;border:1px solid #e3e5ea;border-radius:8px}
+#crule{box-sizing:border-box;width:100%;padding:10px;font:inherit;font-size:16px;border:1px solid #c5c8d0;border-radius:8px}.plist{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow:auto;border:1px solid #e3e5ea;border-radius:8px;padding:8px}.peditor{width:auto;font-size:13px}.peditor th{color:#626b78;font-weight:500;padding:3px 6px}.peditor td{padding:3px 6px;white-space:nowrap}.peditor input{width:3em;padding:4px;font-size:14px;text-align:center;margin:0 2px}.peditor input.p1{border-color:#2563eb;color:#2563eb}.peditor input.p2{border-color:#ea580c;color:#ea580c}.peditor input:placeholder-shown{background:#fff7e6}.peditor input.bad{background:#fde8e8}.pnums{display:flex;gap:10px;flex-wrap:wrap}.pnums label{display:flex;flex-direction:column;font-weight:500;font-size:14px;margin:0}.pnums input{width:6em}.pwrap{overflow-x:auto}.pmx{border-collapse:separate;border-spacing:6px;width:100%}.pmx th{font-size:14px;color:#626b78;font-weight:600;text-align:center}.pmx th button{padding:8px 10px;font-size:15px;white-space:nowrap}.pmx th button.pick,.pmx th.pmine{outline:3px solid #223149;color:#10131a}.pmx th.popp{color:#10131a;text-decoration:underline}.pmx td{background:#f1f2f5;border-radius:10px;padding:8px;min-width:96px;border:2px solid transparent}.pmx td.prow{background:#e7ecf5}.pmx td.pcol{border-color:#9aa4b2}.pmx td.phit{border-color:#223149;background:#dfe6f3}.pline{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:15px;line-height:1.8}.pline b{font-size:20px;font-variant-numeric:tabular-nums}.pline.mine b{color:#2563eb}.pline .plab{color:#626b78;font-size:13px;min-width:2.2em}.pline select{font-size:16px;padding:2px 4px;width:auto}.ptag{font-size:11px;color:#b45309;background:#fff3dc;border-radius:5px;padding:0 5px;white-space:nowrap}
 </style></head><body>
 <h1>🎲 Pair Live</h1>
 <div id="joinbox" class="card"><h2>參加實驗</h2><label for="joincode">請輸入實驗者給你的代碼</label><input id="joincode" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="12" placeholder="例如 4821"><div class="controls" style="margin-top:12px"><button id="joinBtn" class="main">加入</button></div></div>
-<div id="setup" class="card hide"><h2>實驗者：建立實驗</h2><label>題目系列</label><div class="modes"><label><input type="radio" name="series" value="state" checked>真實狀態系列（原本的題目：真實狀態、題組、兩人即時選擇）</label><label><input type="radio" name="series" value="color">顏色協調系列（實驗者隨機抽顏色；Player 1 先選，Player 2 看不到再選；選到同色都得 1 分）</label><label><input type="radio" name="series" value="payoff">報酬設計系列（實驗者給一張報酬表、留空格；出題者填好空格並選行動，另一人看到填好的表再選；可設定兩人輪流出題）</label></div><div id="stateopts"><label for="states">狀態集合 S</label><input id="states" value="ABC" maxlength="6"><label for="seconds">每回合秒數</label><input id="seconds" type="number" value="30" min="1" max="300"><details id="qbank" class="qbank"><summary>題目庫（點開查看所有題目）</summary><div id="qbanklist"></div></details><input type="radio" name="qmode" value="pairs" checked hidden><div id="qpickbox" class="hide"><label id="qpicklabel">題目（勾選要用的題目）</label><div id="qpick" class="qpick"></div><p id="qpicknote" class="muted"></p></div><div id="poolopts" class="hide"><label>題目池：兩人的題目</label><div class="modes"><label><input type="radio" name="poolsame" value="diff" checked>各自抽（兩人可能不同題）</label><label><input type="radio" name="poolsame" value="same">抽一題兩人共用（兩人一定同題）</label><label><input type="checkbox" id="tellsame" disabled>告訴受試者「對手的題目和你相同」（只能搭配「兩人共用」；不勾的話，受試者看到的畫面和「各自抽」完全一樣）</label></div></div><div id="pairsbox"><label for="savedsets">已存的題組</label><select id="savedsets"><option value="">（選一個題組，自動填入下面）</option></select><label for="qpairs">題組（每一組是一個回合的題目：Player 1／Player 2）</label><input id="qpairs" autocomplete="off" placeholder="例如 5/6, 5/7, 5/6|7, 20/21x"><p class="muted">每一組代表一個回合的設定。預設每一對受試者會把題組<b>隨機排序</b>後依序玩，每一對的順序各自抽；勾選下面的「題組順序固定」則每一對都照輸入的順序玩。斜線左邊是 Player 1、右邊是 Player 2；寫 5 或 5/5 代表兩人同題。用 | 列出候選題目，該回合從中等機率抽一題，例如 5/6|7 是 Player 1 做 Q5、Player 2 從 Q6、Q7 抽一題。在一組後面加 x（例如 20/21x 或 20/21 x），這個回合兩人都看不到真實狀態和私有資訊。加 m、a 或 r，這個回合的對手是電腦：m＝鏡像、a＝反鏡像、r＝隨機（例如 10/15xm, 10/15xa, 10/15xr）；題組裡只要有一組標了 m／a／r，整場都是和電腦配對。</p><div class="modes"><label><input type="checkbox" id="fixorder">題組順序固定：每一對都照輸入的順序玩（不勾＝每一對各自隨機排序）</label></div><label for="rounds">總回合數</label><input id="rounds" type="number" value="4" min="1" max="100"><p id="roundnote" class="muted"></p><div class="modes"><label><input type="checkbox" id="showopp1" checked>告訴 Player 1：對手（Player 2）本回合可能的題目</label><label><input type="checkbox" id="showopp2" checked>告訴 Player 2：對手（Player 1）本回合可能的題目</label></div><p class="muted">勾了之後，受試者會看到「對手本回合的題目」卡片：對手只有一個候選時，他就知道對手的題目；有多個候選時，看到「是下列其中之一」。不勾的話，受試者只看到自己的題目。</p></div><p class="muted">每回合重新抽取真實狀態和兩人的資訊。</p><div class="modes"><label><input type="checkbox" id="hideinfo">整場都不顯示真實狀態和私有資訊（給 Q10–Q16、Q20–Q25、Q43–Q46 這類與真實狀態無關的題目用；受試者只看到 A、B、C… 按鈕和題目）。只有部分回合不顯示時，改在題組裡那一組後面加 x</label></div>
+<div id="setup" class="card hide"><h2>實驗者：建立實驗</h2><label for="adminpw">實驗者密碼（建立實驗、管理場次都要輸入）</label><input id="adminpw" type="password" autocomplete="current-password"><label>題目系列</label><div class="modes"><label><input type="radio" name="series" value="state" checked>真實狀態系列（原本的題目：真實狀態、題組、兩人即時選擇）</label><label><input type="radio" name="series" value="color">顏色協調系列（實驗者隨機抽顏色；Player 1 先選，Player 2 看不到再選；選到同色都得 1 分）</label><label><input type="radio" name="series" value="payoff">報酬設計系列（實驗者給一張報酬表、留空格；出題者填好空格並選行動，另一人看到填好的表再選；可設定兩人輪流出題）</label></div><div id="stateopts"><label for="states">狀態集合 S</label><input id="states" value="ABC" maxlength="6"><label for="seconds">每回合秒數</label><input id="seconds" type="number" value="30" min="1" max="300"><details id="qbank" class="qbank"><summary>題目庫（點開查看所有題目）</summary><div id="qbanklist"></div></details><input type="radio" name="qmode" value="pairs" checked hidden><div id="qpickbox" class="hide"><label id="qpicklabel">題目（勾選要用的題目）</label><div id="qpick" class="qpick"></div><p id="qpicknote" class="muted"></p></div><div id="poolopts" class="hide"><label>題目池：兩人的題目</label><div class="modes"><label><input type="radio" name="poolsame" value="diff" checked>各自抽（兩人可能不同題）</label><label><input type="radio" name="poolsame" value="same">抽一題兩人共用（兩人一定同題）</label><label><input type="checkbox" id="tellsame" disabled>告訴受試者「對手的題目和你相同」（只能搭配「兩人共用」；不勾的話，受試者看到的畫面和「各自抽」完全一樣）</label></div></div><div id="pairsbox"><label for="savedsets">已存的題組</label><select id="savedsets"><option value="">（選一個題組，自動填入下面）</option></select><label for="qpairs">題組（每一組是一個回合的題目：Player 1／Player 2）</label><input id="qpairs" autocomplete="off" placeholder="例如 5/6, 5/7, 5/6|7, 20/21x"><p class="muted">每一組代表一個回合的設定。預設每一對受試者會把題組<b>隨機排序</b>後依序玩，每一對的順序各自抽；勾選下面的「題組順序固定」則每一對都照輸入的順序玩。斜線左邊是 Player 1、右邊是 Player 2；寫 5 或 5/5 代表兩人同題。用 | 列出候選題目，該回合從中等機率抽一題，例如 5/6|7 是 Player 1 做 Q5、Player 2 從 Q6、Q7 抽一題。在一組後面加 x（例如 20/21x 或 20/21 x），這個回合兩人都看不到真實狀態和私有資訊。加 m、a 或 r，這個回合的對手是電腦：m＝鏡像、a＝反鏡像、r＝隨機（例如 10/15xm, 10/15xa, 10/15xr）；題組裡只要有一組標了 m／a／r，整場都是和電腦配對。</p><div class="modes"><label><input type="checkbox" id="fixorder">題組順序固定：每一對都照輸入的順序玩（不勾＝每一對各自隨機排序）</label></div><label for="rounds">總回合數</label><input id="rounds" type="number" value="4" min="1" max="100"><p id="roundnote" class="muted"></p><div class="modes"><label><input type="checkbox" id="showopp1" checked>告訴 Player 1：對手（Player 2）本回合可能的題目</label><label><input type="checkbox" id="showopp2" checked>告訴 Player 2：對手（Player 1）本回合可能的題目</label></div><p class="muted">勾了之後，受試者會看到「對手本回合的題目」卡片：對手只有一個候選時，他就知道對手的題目；有多個候選時，看到「是下列其中之一」。不勾的話，受試者只看到自己的題目。</p></div><p class="muted">每回合重新抽取真實狀態和兩人的資訊。</p><div class="modes"><label><input type="checkbox" id="hideinfo">整場都不顯示真實狀態和私有資訊（給 Q10–Q16、Q20–Q25、Q43–Q46 這類與真實狀態無關的題目用；受試者只看到 A、B、C… 按鈕和題目）。只有部分回合不顯示時，改在題組裡那一組後面加 x</label></div>
 <label>對手</label><div class="modes"><label><input type="radio" name="botmode" value="" checked>另一位參與者（依到達順序兩兩配對）</label><label><input type="radio" name="botmode" value="mirror">電腦：鏡像（參與者選什麼，電腦就選一樣的）</label><label><input type="radio" name="botmode" value="anti">電腦：反鏡像（電腦隨機選一個和參與者不同的狀態）</label><label><input type="radio" name="botmode" value="random">電腦：隨機（電腦不看參與者，從所有狀態中隨機選，可能剛好一樣）</label></div><p class="muted">選電腦時，每位參與者一進來就和電腦配對（參與者是 Player 1、電腦是 Player 2），不用等人。電腦一直是 Ready；每回合開始後 0.3–1 秒電腦先隨機選一格；之後參與者每點一次，電腦在 0.3–1 秒後跟著選。參與者畫面和真人對手時一樣，不會顯示對手是電腦。只能用在自動配對場次。題組裡標了 m／a／r 的組照標示；沒標示的組照這裡的選擇。</p></div>
 <div id="coloropts" class="hide"><label>每題幾個顏色</label><div class="modes"><label><input type="radio" name="csize" value="2" checked>2 個</label><label><input type="radio" name="csize" value="3">3 個</label></div><label for="cn">題數</label><input id="cn" type="number" value="10" min="1" max="60"><div class="modes"><label><input type="checkbox" id="cshuffle" checked>兩人看到的顏色順序各自隨機打亂（不勾＝兩人看到一樣的順序，位置也可以當線索）</label><label><input type="checkbox" id="cfeedback" checked>每題結束後，兩人都看到對方選了哪個顏色、有沒有對上</label></div><label for="crule">得分規則（兩人都看到這段文字）</label><textarea id="crule" rows="3">如果你和對手選了一樣的顏色，你們都得 1 分；如果選了不一樣的顏色，你們都得 0 分。</textarea><label>這個場次的顏色（實驗者從 RGB 隨機抽；每一對都做同樣的題）</label><div id="clist" class="clist"></div><div class="controls" style="margin-top:8px"><button id="cregen" type="button">重新抽顏色</button></div><p class="muted">同一題裡的顏色彼此至少差 RGB 距離 80，才分得出來。顏色協調系列只能用自動配對場次，不能用電腦對手。</p></div><div id="payoffopts" class="hide"><label>誰出題</label><div class="modes"><label><input type="radio" name="prot" value="rotate" checked>兩人輪流：單數題 Player 1 出題，雙數題 Player 2 出題</label><label><input type="radio" name="prot" value="p1">每一題都由 Player 1 出題</label></div><p class="muted">出題者把空格填上分數並先選行動；回答者看到填好的表再選。下面的設定、表格和文字都從出題者的角度寫：列＝出題者的行動、欄＝回答者的行動，每格前面是出題者的分數、後面是回答者的分數。</p><div class="pnums"><label>出題者的選項數（列）<input id="prows" type="number" value="2" min="2" max="4"></label><label>回答者的選項數（欄）<input id="pcols" type="number" value="2" min="2" max="4"></label><label>分數最小<input id="pmin" type="number" value="-1" step="1"></label><label>分數最大<input id="pmax" type="number" value="3" step="1"></label><label>題數<input id="pn" type="number" value="5" min="1" max="60"></label><label>每題空格數<input id="pblanks" type="number" value="2" min="0"></label></div><label>空格放在誰的分數</label><div class="modes"><label><input type="radio" name="pwhere" value="p2" checked>回答者的分數</label><label><input type="radio" name="pwhere" value="p1">出題者自己的分數</label><label><input type="radio" name="pwhere" value="any">都可以</label></div><div class="modes"><label><input type="checkbox" id="pmark" checked>告訴回答者哪些格子是出題者填的</label><label><input type="checkbox" id="pfeedback" checked>每題結束後，兩人都看到對方選了什麼、各得幾分</label></div><label>出題者填格子的時候，回答者看到什麼</label><div class="modes"><label><input type="radio" name="pview" value="template" checked>有空格的表（固定的格子看得到，空格顯示「?」）</label><label><input type="radio" name="pview" value="masked">版面一樣，但所有數字都遮住（每格都是「?」）</label><label><input type="radio" name="pview" value="wait">只有「對手正在出題」的等待畫面，看不到表</label></div><div class="pnums"><label>揭曉前延遲（秒），最短<input id="pdmin" type="number" value="0" min="0" max="60" step="0.5"></label><label>最長<input id="pdmax" type="number" value="0" min="0" max="60" step="0.5"></label></div><p class="muted">出題者完成後，回答者要再等一段時間（在最短和最長之間隨機）才看到填好的表、才能選；這樣揭曉的時間不會透露出題者花了多久。兩個都填 0＝立刻揭曉。</p><label>這個場次的題目（每一對都做同樣的題）</label><div id="plist" class="plist"></div><p id="pnote" class="muted"></p><label for="ptext">用文字輸入題目（一行一題）</label><textarea id="ptext" rows="6" spellcheck="false" style="box-sizing:border-box;width:100%;padding:10px;font:15px ui-monospace,Menlo,monospace;border:1px solid #c5c8d0;border-radius:8px"></textarea><div class="controls" style="margin-top:6px"><button id="papply" type="button">套用文字裡的題目</button></div><p class="muted">格式：<code>(2,1),(1,_)//(3,-1),(1,_)</code>。每個括號是一格，前面是出題者的分數、後面是回答者的分數；<code>_</code>＝空格（由出題者填）；<code>,</code> 分開同一列的格子（回答者的選項 A、B…）；<code>//</code> 換列（出題者的選項 A、B…）。輪流出題時，同一題不管誰出題意思都一樣。每一題寫一行，所有題目的大小要一樣（2×2 到 4×4）。上面的表格改了，這裡會跟著更新；這裡改完要按「套用」。</p><div class="controls"><button id="pregen" type="button">照上面的設定隨機抽題</button><button id="pdefault" type="button">換回 5 題範例（2×2、−1～3）</button></div><p class="muted">改上面的選項數、題數、空格數或空格位置，都會重新抽題（自己改過的題目會被換掉；只改分數範圍不會）。每題空格數填 0＝實驗者把所有格子都填好，出題者只選行動。報酬設計系列只能用自動配對場次，不能用電腦對手。</p></div>
 <label for="newcode">加入代碼（3–12 個英文或數字；留空會自動產生 4 位數）</label><input id="newcode" autocomplete="off" maxlength="12" placeholder="留空自動產生">
 <div class="controls" style="margin-top:12px"><button id="createSession" class="main">建立自動配對場次</button><button id="create">建立單一雙人遊戲（手動）</button></div>
-<p class="muted">自動配對：把加入代碼告訴所有參與者，輸入代碼的人依到達順序兩兩配對，配對後雙方按 Ready 就自動開始。</p><h2 style="margin-top:26px">管理開放中的場次</h2><label for="adminpw">實驗者密碼</label><input id="adminpw" type="password" autocomplete="current-password"><div class="controls" style="margin-top:12px"><button id="listSessions">顯示開放中的場次</button><button id="listClosed">顯示已關閉的場次</button></div><div id="sessionlist"></div><div id="closedlist"></div><p class="muted">「關閉場次」：不再接受新的參與者，並釋出加入代碼；進行中的組可以玩完。「全部停止」：連進行中的組也一起停止。列表最上面的「關閉所有場次」「停止所有場次」一次處理所有開放中的場次（按兩次確認）。「顯示已關閉的場次」：列出最近關閉的場次（新的在前），可以開監看頁或直接下載資料（CSV）。</p></div>
+<p class="muted">自動配對：把加入代碼告訴所有參與者，輸入代碼的人依到達順序兩兩配對，配對後雙方按 Ready 就自動開始。</p><h2 style="margin-top:26px">管理開放中的場次</h2><p class="muted" style="margin:4px 0 0">使用最上面輸入的實驗者密碼。</p><div class="controls" style="margin-top:12px"><button id="listSessions">顯示開放中的場次</button><button id="listClosed">顯示已關閉的場次</button></div><div id="sessionlist"></div><div id="closedlist"></div><p class="muted">「關閉場次」：不再接受新的參與者，並釋出加入代碼；進行中的組可以玩完。「全部停止」：連進行中的組也一起停止。列表最上面的「關閉所有場次」「停止所有場次」一次處理所有開放中的場次（按兩次確認）。「顯示已關閉的場次」：列出最近關閉的場次（新的在前），可以開監看頁或直接下載資料（CSV）。</p></div>
 <div id="monitor" class="hide">
 <section class="card"><h2>場次監看</h2><p class="muted" style="margin:0">加入代碼</p><div id="sessioncode" class="timer">—</div><p class="muted">參與者打開實驗網頁、在「參加實驗」輸入這個代碼即可。</p><label>或直接發參與者連結</label><input id="sessionurl" readonly><button id="copySession">複製參與者連結</button><div id="qrbox" class="qrbox" aria-label="參與者連結的 QR code"></div><button id="qrBig" class="hide">全螢幕顯示 QR code</button>
 <p id="sessioninfo" class="muted"></p><div class="stats"><div><b id="nWaiting">0</b>等待配對</div><div><b id="nPlaying">0</b>進行中</div><div><b id="nDone">0</b>已完成</div></div>
 <p class="muted">這個頁面的網址含管理權限，請勿分享。</p></section>
 <section class="card"><h2>各組狀態</h2><table><thead><tr><th>組別</th><th>狀態</th><th>回合</th><th>P1／P2 上次連線</th></tr></thead><tbody id="gamesTable"></tbody></table></section>
-<section class="card"><h2>下載資料</h2><button id="exportBtn" class="main">下載本場資料（CSV）</button><p class="muted">下載兩個檔：每回合資料、點擊紀錄（和 SQL Editor 查詢 14、12 相同），可以直接給 pair_video.py 做影片。實驗進行中也可以下載，拿到的是到目前為止的資料。要存進 Google 雲端硬碟，下載時選雲端硬碟裡的資料夾即可。</p><div id="exportLinks" class="muted"></div></section>
+<section class="card"><h2>下載資料</h2><div class="controls"><button id="exportBtn" class="main">下載本場資料（CSV）</button><button id="plotBtn">製作 plot</button></div><p class="muted">下載兩個檔：每回合資料、點擊紀錄（和 SQL Editor 查詢 14、12 相同），可以直接給 pair_video.py 做影片。實驗進行中也可以下載，拿到的是到目前為止的資料。要存進 Google 雲端硬碟，下載時選雲端硬碟裡的資料夾即可。</p><div id="exportLinks" class="muted"></div></section>
 <section class="card"><h2>控制</h2><div class="controls"><button id="closeSession">停止接受新的參與者</button><button class="danger" id="stopSession">停止所有組並關閉場次</button></div></section>
 </div>
 <div id="game" class="hide">
@@ -28,6 +29,7 @@
 <section id="host" class="card hide"><h2>Player 1 控制</h2><div id="invite" class="hide"><label>Player 2 專屬網址</label><input id="guesturl" readonly><button id="copy">複製 Player 2 連結</button></div><div class="controls" style="margin-top:12px"><button class="main" id="prepare">準備下一回合</button><button class="main" id="start">雙方 Ready，開始計時</button><button class="danger" id="stop">停止實驗</button></div></section>
 </div></div>
 <p id="message" class="warn"></p>
+<div id="plotpanel" class="plotpanel hide" role="dialog" aria-modal="true" aria-labelledby="plottitle"><div class="plotinner"><div class="plothead"><h2 id="plottitle">製作 plot</h2><button id="plotclose" type="button">關閉</button></div><div class="controls"><select id="plotgroup" aria-label="組別"></select><button id="plotall" type="button">下載這些圖（PNG）</button><button id="plotnash" type="button" class="hide">下載 Nash 均衡分析表（CSV）</button></div><p class="muted">圖在瀏覽器裡畫，資料不會上傳到別的地方。真實狀態系列每一回合一張；顏色協調、報酬設計每一組一張。和 pair_plots.py 畫的一樣；正在進行中的場次，畫的是到目前為止的資料。</p><div id="plotlist"></div></div></div>
 <div id="qrfull" class="qrfull hide"><div class="muted">掃描加入，或輸入代碼</div><div id="qrfullcode" class="big">—</div><div id="qrfullimg"></div><div class="muted">點任何地方關閉</div></div>
 <script type="module">
 import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm';
@@ -181,10 +183,13 @@ const botMode=()=>document.querySelector('input[name=botmode]:checked')?.value||
 function sessionBot(st){const sp=st.spec?.p_spec||[],marks=sp.map(e=>e[3]).filter(Boolean);if(!marks.length)return botMode();
  if(sp.some(e=>!e[3])&&!botMode())throw Error('題組裡有些組標了 m／a／r（對手是電腦），有些沒有：參與者在同一場裡不能一下對真人、一下對電腦。請每一組都標 m、a 或 r，或在「對手」選一種電腦，當作沒標示的組的預設。');
  return botMode()||marks[0];}
+// v47: creating an experiment needs the experimenter password (checked by the server in live_admin_create)
+async function adminCreate(kind,args){const pw=el('adminpw').value;if(!pw)throw Error('請先在最上面輸入實驗者密碼，才能建立實驗。');
+ const d=await rpc('live_admin_create',{p_password:pw,p_kind:kind,p_args:args});if(!d.ok)throw Error(adminErr[d.error]||d.error);return d.data}
 async function createGame(){try{
  if(botMode()||(el('qpairs').value.match(/[mMｍＭaAａＡrRｒＲ]\s*(?=$|[,，、;；])/)))throw Error('電腦對手只能用在自動配對場次，請按「建立自動配對場次」。');
  el('create').disabled=true;
- const st=readSettings();let d=st.pool?await rpc('live_create_pool2',{...st.base,...st.pool}):st.spec?await rpc('live_create_spec2',{...st.base,...st.spec}):await rpc('live_create_v4',{...st.base,...st.pairs});room=d.room;token=d.host_token;
+ const st=readSettings();let d=st.pool?await adminCreate('game_pool2',{...st.base,...st.pool}):st.spec?await adminCreate('game_spec2',{...st.base,...st.spec}):await adminCreate('game_v4',{...st.base,...st.pairs});room=d.room;token=d.host_token;
  if(el('hideinfo').checked)await rpc('live_game_set_hide_info',{p_room:room,p_token:token,p_hide:true});
  try{sessionStorage.setItem('guest_'+room,`${BASE}?room=${room}&token=${d.guest_token}`)}catch{}
  history.replaceState({},'',`${BASE}?room=${room}&token=${token}`);await enter();
@@ -267,12 +272,12 @@ async function createSession(){try{
  const code=el('newcode').value.trim().toUpperCase();
  if(code&&!/^[A-Z0-9]{3,12}$/.test(code))throw Error('加入代碼請用 3–12 個英文字母或數字');
  if(seriesSel()==='payoff'){const sp=payValid();
-  const d=await rpc('live_session_create_payoff',{p_code:code||null,p_spec:sp,p_mark:el('pmark').checked,p_feedback:el('pfeedback').checked,p_p2view:document.querySelector('input[name=pview]:checked').value,p_delay_min:Number(el('pdmin').value),p_delay_max:Number(el('pdmax').value),p_rotate:document.querySelector('input[name=prot]:checked').value==='rotate'});
+  const d=await adminCreate('session_payoff',{p_code:code||null,p_spec:sp,p_mark:el('pmark').checked,p_feedback:el('pfeedback').checked,p_p2view:document.querySelector('input[name=pview]:checked').value,p_delay_min:Number(el('pdmin').value),p_delay_max:Number(el('pdmax').value),p_rotate:document.querySelector('input[name=prot]:checked').value==='rotate'});
   history.replaceState({},'',`${BASE}?session=${d.session}&admin=${d.admin_token}`);await monitor(d.session,d.admin_token);return;}
  if(seriesSel()==='color'){if(!colorSpec.length)genColors();
-  const d=await rpc('live_session_create_color',{p_code:code||null,p_spec:colorSpec,p_shuffle:el('cshuffle').checked,p_feedback:el('cfeedback').checked,p_rule:el('crule').value});
+  const d=await adminCreate('session_color',{p_code:code||null,p_spec:colorSpec,p_shuffle:el('cshuffle').checked,p_feedback:el('cfeedback').checked,p_rule:el('crule').value});
   history.replaceState({},'',`${BASE}?session=${d.session}&admin=${d.admin_token}`);await monitor(d.session,d.admin_token);return;}
- const st=readSettings(),c={p_code:code||null};sessionBot(st);let d=st.pool?await rpc('live_session_create_pool2',{...st.base,...c,...st.pool}):st.spec?await rpc('live_session_create_spec2',{...st.base,...c,...st.spec}):await rpc('live_session_create_v4',{...st.base,...c,...st.pairs});
+ const st=readSettings(),c={p_code:code||null};sessionBot(st);let d=st.pool?await adminCreate('session_pool2',{...st.base,...c,...st.pool}):st.spec?await adminCreate('session_spec2',{...st.base,...c,...st.spec}):await adminCreate('session_v4',{...st.base,...c,...st.pairs});
  if(el('hideinfo').checked)await rpc('live_session_set_hide_info',{p_session:d.session,p_admin:d.admin_token,p_hide:true});
  const bm=sessionBot(st);if(bm)await rpc('live_session_set_bot',{p_session:d.session,p_admin:d.admin_token,p_bot:bm});
  history.replaceState({},'',`${BASE}?session=${d.session}&admin=${d.admin_token}`);await monitor(d.session,d.admin_token);
@@ -342,7 +347,8 @@ async function listClosed(more){const pw=el('adminpw').value;if(!pw){msg('請輸
    const dl=document.createElement('button');dl.textContent='下載資料（CSV）';
    const links=document.createElement('div');links.className='muted';
    dl.onclick=()=>exportSession(x.session,x.admin_token,dl,links,x.series);
-   ctl.append(mon,dl);row.append(code,info,ctl,links);return row;});
+   const pb=document.createElement('button');pb.textContent='製作 plot';pb.onclick=()=>makePlots(x.session,x.admin_token,x.series||'state',pb);
+   ctl.append(mon,dl,pb);row.append(code,info,ctl,links);return row;});
   const extra=[];
   if(d.total>d.sessions.length&&closedLimit<200){const b=document.createElement('button');b.textContent='再多顯示 30 場';b.style.marginTop='10px';
    b.onclick=()=>{closedLimit=Math.min(200,closedLimit+30);void listClosed(true)};extra.push(b);}
@@ -363,6 +369,208 @@ async function exportSession(sid,adm,btn=el('exportBtn'),out=el('exportLinks'),s
   out.replaceChildren(p,...links.flatMap((a,i)=>i?[document.createTextNode('　'),a]:[a]));
  }catch(e){msg(e.message==='Access denied'?'沒有權限下載這個場次的資料。':e.message)}finally{btn.disabled=false}}
 
+// ---------- experimenter: 製作 plot (v47) — static charts drawn in the browser from the session's data ----------
+// Same pictures as pair_plots.py: 真實狀態 = one timeline per round; 顏色協調 = one summary per pair; 報酬設計 = one summary per
+// pair plus a pure-strategy Nash equilibrium table. Nothing is uploaded: the data comes from the export RPC and stays here.
+const PL={W:1280,H:720,BLUE:'#2563eb',ORANGE:'#ea580c',GRAY:'#9aa4b2',GREEN:'#15803d',RED:'#b42318',NAVY:'#223149',MUTED:'#626b78',
+ FONT:"system-ui,-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC',sans-serif"};
+const plEsc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const plText=(x,y,s,o={})=>`<text x="${x}" y="${y}" font-size="${o.size||14}" fill="${o.fill||'#20222a'}" text-anchor="${o.anchor||'start'}"${o.weight?` font-weight="${o.weight}"`:''}${o.base?` dominant-baseline="${o.base}"`:''}>${plEsc(s)}</text>`;
+const plLine=(x1,y1,x2,y2,c,w=1,dash)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''}/>`;
+const plRect=(x,y,w,h,f,o='')=>`<rect x="${x}" y="${y}" width="${Math.max(0,w)}" height="${Math.max(0,h)}" fill="${f}" ${o}/>`;
+const plVLabel=(x,y,s)=>`<text transform="translate(${x},${y}) rotate(-90)" font-size="13" fill="${PL.MUTED}" text-anchor="middle">${plEsc(s)}</text>`;
+const plSvg=body=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PL.W} ${PL.H}" width="${PL.W}" height="${PL.H}" font-family="${PL.FONT}"><rect width="${PL.W}" height="${PL.H}" fill="#ffffff"/>${body}</svg>`;
+const plTable=t=>t.rows.map(r=>Object.fromEntries(t.cols.map((c,i)=>[c,r[i]])));
+const plTrue=v=>v===true||['true','t','1','yes'].includes(String(v).toLowerCase());
+const plNum=v=>v===null||v===undefined||v===''?null:Number(v);
+function plTicks(lo,hi,max=10){const span=Math.max(1e-9,hi-lo);const raw=span/max,p=Math.pow(10,Math.floor(Math.log10(raw)));const step=[1,2,5,10].map(m=>m*p).find(s=>span/s<=max)||10*p;
+ const out=[];for(let v=Math.ceil(lo/step)*step;v<=hi+1e-9;v+=step)out.push(+v.toFixed(6));return out}
+
+// ----- 真實狀態: the server's scoring (live_score / live_payoff_vs), as in pair_video.py -----
+const PS={SAME_OWN:{11:1,12:-1,13:1,14:1,15:0,16:0,17:1,18:1,20:1,21:0,22:0,23:0,24:0,25:0,43:1,44:1,45:0,46:0},
+ SAME_OPP:{11:0,12:0,13:1,14:-1,15:1,16:-1,17:20,18:-20,24:0,25:0,43:1,44:-1,45:1,46:-1},
+ DIFF_OWN:{10:0,11:0,12:0,13:0,14:0,15:0,16:0,17:0,18:0,20:0,21:1,22:1,23:-1,24:1,25:-1,43:1,44:1,45:0,46:0},
+ DIFF_OPP:{22:1,23:-1,24:-1,25:1,43:-1,44:1,45:-1,46:1},
+ SD:new Set([10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,43,44,45,46]),
+ STATE_FREE:new Set([10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,43,44,45,46])};
+function plPayoff(q,x,y,sx,sy,b,truth){
+ if(q===1)return +(x!=null&&x===y&&x===truth);
+ if(q===2)return +(x!=null&&y!=null&&x!==y&&x!==truth&&y!==truth);
+ if(q===3)return +(sx!=null&&b-sx>=2-1e-9&&(sy==null||sy-sx>2+1e-9));
+ if(q===4)return (x===truth?1:0)-(y===truth?1:0);
+ if(q===5)return +(x===truth);if(q===6)return +(x!=null&&x!==truth);
+ if(q===7)return +(y===truth);if(q===8)return +(y!=null&&y!==truth);
+ if((q>=11&&q<=18)||q===20)return x!=null&&x===y?PS.SAME_OWN[q]:0;
+ if(q>=21&&q<=25)return x!=null&&y!=null&&x!==y?PS.DIFF_OWN[q]:0;
+ if(q>=43&&q<=46){if(x==null||y==null)return 0;return x===y?PS.SAME_OWN[q]:PS.DIFF_OWN[q]}
+ return 0}
+function plPayoffVs(q,qo,x,y,sx,sy,b,truth){
+ if(q===10){if(x==null||y==null)return 0;return x===y?(PS.SAME_OPP[qo]||0):(PS.DIFF_OPP[qo]||0)}
+ if(q>=35&&q<=38)return {35:+(y===truth),36:+(y!=null&&y!==truth),37:-(y===truth),38:-(y!=null&&y!==truth)}[qo]||0;
+ return plPayoff(q,x,y,sx,sy,b,truth)}
+const plChoiceAt=(cl,p,t)=>{let c=null;for(const k of cl){if(k.t>t)break;if(k.p===p)c=k.c}return c};
+function plRunStart(cl,p,t,truth){const mine=cl.filter(k=>k.p===p&&k.t<=t);if(!mine.length||mine[mine.length-1].c!==truth)return null;let s=mine[mine.length-1].t;
+ for(let i=mine.length-1;i>=0;i--){if(mine[i].c!==truth)break;s=mine[i].t}return s}
+function plScore(r){const cut=r.stop==null?r.seconds:Math.min(r.seconds,r.stop),out=[];
+ for(let sec=1;sec<=r.seconds;sec++){if(sec>cut+1e-9)break;const a=plChoiceAt(r.clicks,1,sec),b=plChoiceAt(r.clicks,2,sec);let s1=null,s2=null;
+  if(r.q1===3||r.q2===3){s1=plRunStart(r.clicks,1,sec,r.truth);s2=plRunStart(r.clicks,2,sec,r.truth)}
+  let p1=plPayoffVs(r.q1,r.q2,a,b,s1,s2,sec,r.truth)+(r.q1===4?1:0),p2=plPayoffVs(r.q2,r.q1,b,a,s2,s1,sec,r.truth)+(r.q2===4?1:0);
+  if(r.q1===50)p1=+(a!=null&&a!==r.truth&&r.info2.includes(a));if(r.q2===50)p2=+(b!=null&&b!==r.truth&&r.info1.includes(b));
+  if(r.shift&&a!=null&&b!=null){if(PS.SD.has(r.q1))p1+=r.shift;if(PS.SD.has(r.q2))p2+=r.shift}
+  out.push([sec,p1,p2])}
+ return out}
+function plLoadState(d){const games=new Map();
+ for(const row of plTable(d.rounds)){const r={group:row['組別'],no:Number(row['回合']),total:plNum(row['總回合數']),q1:Number(row['p1題目']),q2:Number(row['p2題目']),
+   truth:String(row['真實狀態']||'').trim(),info1:[...String(row['p1資訊']||'').trim()],info2:[...String(row['p2資訊']||'').trim()],
+   seconds:Number(row['秒數']||30),stop:plNum(row['停止於秒']),hide:plTrue(row['不顯示狀態']),design:plNum(row['題組第幾組']),
+   states:row['狀態集合']?[...String(row['狀態集合']).trim()]:null,shift:Number(row['計分加分']||0),clicks:[]};
+  if(!games.has(r.group))games.set(r.group,new Map());games.get(r.group).set(r.no,r)}
+ plTable(d.clicks).forEach((row,k)=>{const g=games.get(row['組別']),r=g&&g.get(Number(row['回合']));if(r)r.clicks.push({t:Math.max(0,Number(row['開始後秒數'])),k,p:Number(row['玩家']),c:String(row['選擇']).trim()})});
+ for(const [g,rs] of games){const seen=new Set();for(const r of rs.values()){[...r.info1,...r.info2,r.truth,...r.clicks.map(c=>c.c)].forEach(s=>s&&seen.add(s))}
+  const total=Math.max(0,...[...rs.values()].map(r=>r.total||0),...rs.keys());
+  for(const r of rs.values()){r.states=r.states||[...seen].sort();r.total=r.total||total;r.clicks.sort((a,b)=>a.t-b.t||a.k-b.k);r.scores=plScore(r)}}
+ return games}
+function plSameSpans(r){const times=[...new Set([0,r.seconds,...r.clicks.filter(c=>c.t<=r.seconds).map(c=>c.t)])].sort((a,b)=>a-b),spans=[];
+ for(let i=0;i<times.length-1;i++){const a=plChoiceAt(r.clicks,1,times[i]),b=plChoiceAt(r.clicks,2,times[i]);
+  if(a!=null&&a===b){if(spans.length&&Math.abs(spans[spans.length-1][1]-times[i])<1e-9)spans[spans.length-1][1]=times[i+1];else spans.push([times[i],times[i+1]])}}
+ return spans}
+const plShort=(q,shift)=>{const t=(questions[q]||['Q'+q])[0];return t.includes('：')?t.split('：')[1]:t};
+function plStateRound(r){const T=r.seconds,S=r.states,X0=90,X1=1240,xs=t=>X0+(X1-X0)*t/T;
+ const A0=165,A1=470,rowH=(A1-A0)/S.length,yc=s=>A0+rowH*(S.indexOf(s)+0.5);let b='';
+ b+=plText(70,44,`組別 ${r.group}　Round ${r.no} / ${r.total}${r.design?`　題組第 ${r.design} 組`:''}　${r.hide?'本回合不顯示狀態資訊':'真實狀態 '+r.truth}`,{size:24});
+ b+=plText(70,76,`P1：Q${r.q1} ${plShort(r.q1,r.shift)}　　P2：Q${r.q2} ${plShort(r.q2,r.shift)}`,{size:15,fill:PL.MUTED});
+ // legend
+ b+=plLine(70,112,104,112,PL.BLUE,4)+plText(112,117,`P1（Q${r.q1}）`,{size:14})+plLine(240,112,274,112,PL.ORANGE,4)+plText(282,117,`P2（Q${r.q2}）`,{size:14})
+   +plRect(410,104,30,16,PL.GRAY,'opacity="0.4"')+plText(448,117,'兩人選擇相同',{size:14});
+ if(!r.hide&&S.includes(r.truth)){b+=plRect(X0,yc(r.truth)-rowH*0.33,X1-X0,rowH*0.66,'#16a34a','opacity="0.13"');b+=plText(X1,yc(r.truth)-rowH*0.36,'真實狀態',{size:12,fill:PL.GREEN,anchor:'end'})}
+ for(const [t0,t1] of plSameSpans(r))b+=plRect(xs(t0),A0,xs(t1)-xs(t0),A1-A0,'#9ca3af','opacity="0.22"');
+ for(const s of S){b+=plLine(X0,yc(s),X1,yc(s),'#e3e5ea',1);b+=plText(X0-14,yc(s),s,{size:17,anchor:'end',base:'central'})}
+ b+=plVLabel(30,(A0+A1)/2,'選擇');
+ for(const [p,c,off] of [[1,PL.BLUE,-0.09],[2,PL.ORANGE,0.09]]){let cur=null,t0=0,path='';const cl=r.clicks.filter(k=>k.p===p&&k.t<=T);
+  const seg=(a,bb,s)=>{if(s!=null&&S.includes(s)){const y=yc(s)+off*rowH;path+=`M${xs(a)},${y}H${xs(bb)}`}};
+  for(const k of cl){seg(t0,k.t,cur);if(cur!=null&&k.c!==cur&&S.includes(k.c)&&S.includes(cur))path+=`M${xs(k.t)},${yc(cur)+off*rowH}V${yc(k.c)+off*rowH}`;cur=k.c;t0=k.t}
+  seg(t0,T,cur);b+=`<path d="${path}" stroke="${c}" stroke-width="3.5" fill="none"/>`;
+  for(const k of cl)if(S.includes(k.c))b+=`<circle cx="${xs(k.t)}" cy="${yc(k.c)+off*rowH}" r="4" fill="${c}"/>`}
+ if(r.stop!=null&&r.stop<T){b+=plRect(xs(r.stop),A0,X1-xs(r.stop),A1-A0,'#ffffff','opacity="0.85"');b+=plText(xs(r.stop)+6,A0+16,'中途停止',{size:13,fill:PL.RED})}
+ // cumulative scores
+ const B0=530,B1=665;const c1=[0],c2=[0];r.scores.forEach(([,a,bb])=>{c1.push(c1[c1.length-1]+a);c2.push(c2[c2.length-1]+bb)});
+ let lo=Math.min(0,...c1,...c2),hi=Math.max(1,...c1,...c2);const pad=Math.max(1,(hi-lo)*0.12);lo-=pad;hi+=pad;const ys=v=>B1-(B1-B0)*(v-lo)/(hi-lo);
+ for(const v of plTicks(lo,hi,4)){b+=plLine(X0,ys(v),X1,ys(v),v===0?'#c5c8d0':'#f0f1f4',1);b+=plText(X0-10,ys(v),v,{size:12,anchor:'end',base:'central',fill:PL.MUTED})}
+ const step=arr=>arr.map((v,i)=>`${i?'H'+xs(i)+'V':'M'+xs(0)+','}${ys(v)}`).join('')+`H${xs(Math.min(T,arr.length-1))}`;
+ b+=`<path d="${step(c1)}" stroke="${PL.BLUE}" stroke-width="5" fill="none"/><path d="${step(c2)}" stroke="${PL.ORANGE}" stroke-width="2.5" fill="none"/>`;
+ b+=plText(X0+8,B0+8,`P1 ${c1[c1.length-1]} 分`,{size:15,fill:PL.BLUE,base:'hanging'})+plText(X0+8,B0+30,`P2 ${c2[c2.length-1]} 分`,{size:15,fill:PL.ORANGE,base:'hanging'});
+ b+=plVLabel(30,(B0+B1)/2,'累積得分');
+ b+=plLine(X0,B1,X1,B1,'#20222a',1);for(const v of plTicks(0,T,12))b+=plLine(xs(v),B1,xs(v),B1+5,'#20222a',1)+plText(xs(v),B1+20,v,{size:12,anchor:'middle',fill:PL.MUTED});
+ b+=plText((X0+X1)/2,B1+42,'秒',{size:13,anchor:'middle',fill:PL.MUTED});
+ return plSvg(b)}
+
+// ----- 顏色協調 -----
+function plLoadColor(d){const games=new Map();
+ for(const row of plTable(d.colors)){const q={group:row['組別'],no:Number(row['題']),total:Number(row['總題數']),colors:String(row['顏色']||'').split('|').filter(Boolean),
+   pick:{1:row['P1選']||null,2:row['P2選']||null},t1:plNum(row['P1花幾秒']),t2:plNum(row['P2花幾秒（從P1選完起）']),match:row['對上']==null?null:plTrue(row['對上'])};
+  if(!games.has(q.group))games.set(q.group,new Map());games.get(q.group).set(q.no,q)}
+ for(const qs of games.values()){let played=0,m=0;for(const n of [...qs.keys()].sort((a,b)=>a-b)){const q=qs.get(n);if(q.pick[2]){played++;m+=q.match?1:0}q.played=played;q.matched=m}}
+ return games}
+function plColorGroup(g,qs){qs=[...qs.values()].sort((a,b)=>a.no-b.no);const N=Math.max(...qs.map(q=>q.total),...qs.map(q=>q.no)),k=Math.max(...qs.map(q=>q.colors.length));
+ const X0=100,X1=1240,xs=n=>X0+(X1-X0)*(n-0.4)/(N+0.2),cw=Math.min(90,(X1-X0)/(N+0.2)*0.76);const done=qs.filter(q=>q.pick[2]);const m=done.filter(q=>q.match).length;let b='';
+ b+=plText(70,44,`組別 ${g}　顏色協調　${done.length} 題中選到同一個顏色 ${m} 題`,{size:24});
+ b+=plText(70,74,`上：每題兩人選的顏色（✓＝選到一樣）　中：累積選到一樣的比例（虛線＝兩人隨便選的機率 1/${k}）　下：花的時間`,{size:14,fill:PL.MUTED});
+ const A0=110,rh=48;b+=plText(X0-14,A0+rh*0.5+20,'P1',{size:14,anchor:'end',base:'central'})+plText(X0-14,A0+rh*1.5+28,'P2',{size:14,anchor:'end',base:'central'});
+ for(const q of qs){const x=xs(q.no)-cw/2;
+  if(q.pick[1])b+=plRect(x,A0+20,cw,rh,q.pick[1],'stroke="#9aa4b2"');if(q.pick[2])b+=plRect(x,A0+rh+28,cw,rh,q.pick[2],'stroke="#9aa4b2"');
+  if(q.pick[2])b+=plText(xs(q.no),A0+12,q.match?'✓':'✗',{size:17,anchor:'middle',fill:q.match?PL.GREEN:PL.RED})}
+ const B0=300,B1=480,ys=v=>B1-(B1-B0)*v;b+=plVLabel(30,(B0+B1)/2,'選到一樣的比例');
+ for(const v of [0,0.2,0.4,0.6,0.8,1]){b+=plLine(X0,ys(v),X1,ys(v),'#f0f1f4',1);b+=plText(X0-10,ys(v),v.toFixed(1),{size:12,anchor:'end',base:'central',fill:PL.MUTED})}
+ b+=plLine(X0,ys(1/k),X1,ys(1/k),PL.GRAY,1.5,'6 5');
+ if(done.length){b+=`<polyline points="${done.map(q=>`${xs(q.no)},${ys(q.matched/q.played)}`).join(' ')}" stroke="${PL.NAVY}" stroke-width="3" fill="none"/>`;
+  for(const q of done)b+=`<circle cx="${xs(q.no)}" cy="${ys(q.matched/q.played)}" r="5" fill="${PL.NAVY}"/>`}
+ const C0=530,C1=660,tmax=Math.max(1,...qs.map(q=>q.t1||0),...qs.map(q=>q.t2||0))*1.15,yt=v=>C1-(C1-C0)*v/tmax,bw=Math.min(40,cw/2.3);
+ for(const v of plTicks(0,tmax,4)){b+=plLine(X0,yt(v),X1,yt(v),'#f0f1f4',1);b+=plText(X0-10,yt(v),v,{size:12,anchor:'end',base:'central',fill:PL.MUTED})}
+ for(const q of qs){if(q.t1!=null)b+=plRect(xs(q.no)-bw-2,yt(q.t1),bw,C1-yt(q.t1),PL.BLUE);if(q.t2!=null)b+=plRect(xs(q.no)+2,yt(q.t2),bw,C1-yt(q.t2),PL.ORANGE)}
+ b+=plVLabel(30,(C0+C1)/2,'秒')+plRect(960,C0-8,14,14,PL.BLUE)+plText(980,C0+4,'P1',{size:13})+plRect(1020,C0-8,14,14,PL.ORANGE)+plText(1040,C0+4,'P2（從 P1 選完起）',{size:13});
+ b+=plLine(X0,C1,X1,C1,'#20222a',1);for(let n=1;n<=N;n++)b+=plText(xs(n),C1+20,n,{size:12,anchor:'middle',fill:PL.MUTED});b+=plText((X0+X1)/2,C1+44,'題',{size:13,anchor:'middle',fill:PL.MUTED});
+ return plSvg(b)}
+
+// ----- 報酬設計 (+ pure-strategy Nash equilibria) -----
+function plLoadPayoff(d){const games=new Map();
+ for(const row of plTable(d.payoff)){const get=(...ns)=>{for(const n of ns){const k=Object.keys(row).find(c=>c===n||c.startsWith(n));if(k&&row[k]!==undefined)return row[k]}return null};
+  const rc=get('出題者選','P1選'),cc=get('回答者選','P2選'),fl=get('填好的表','P1填好的表');
+  const q={group:row['組別'],no:Number(row['題']),total:Number(row['總題數']),designer:String(row['出題者']||'P1').toUpperCase()==='P2'?2:1,
+   matrix:JSON.parse(get('原始表')),filled:fl?JSON.parse(fl):null,row:rc?rc.charCodeAt(0)-64:null,col:cc?cc.charCodeAt(0)-64:null,
+   pd:plNum(get('出題者得分')),pr:plNum(get('回答者得分'))};
+  q.pay=q.pd==null?null:[q.pd,q.pr];
+  if(!games.has(q.group))games.set(q.group,new Map());games.get(q.group).set(q.no,q)}
+ for(const qs of games.values()){let t1=0,t2=0;for(const n of [...qs.keys()].sort((a,b)=>a-b)){const q=qs.get(n);if(q.pay){t1+=plPts(q,1);t2+=plPts(q,2)}q.tot=[t1,t2]}}
+ return games}
+const plPts=(q,p)=>q.pay?q.pay[q.designer===p?0:1]:null;
+function plNash(m){const R=m.length,C=m[0].length,out=[];for(let i=0;i<R;i++)for(let j=0;j<C;j++){const [d,r]=m[i][j];
+  if(d>=Math.max(...m.map(rw=>rw[j][0]))&&r>=Math.max(...m[i].map(c=>c[1])))out.push([i,j])}return out}
+function plAnalyse(q){if(!q.filled||q.row==null||q.col==null)return null;const m=q.filled,i=q.row-1,j=q.col-1,ne=plNash(m);
+ return {ne,hit:ne.some(([a,bb])=>a===i&&bb===j),dbr:m[i][j][0]>=Math.max(...m.map(rw=>rw[j][0])),rbr:m[i][j][1]>=Math.max(...m[i].map(c=>c[1]))}}
+const plCell=(i,j)=>`(${String.fromCharCode(65+i)},${String.fromCharCode(65+j)})`;
+const plMtext=m=>m.map(r=>r.map(c=>`(${c.map(v=>v===null?'_':v).join(',')})`).join(',')).join('//');
+function plPayoffGroup(g,qs){qs=[...qs.values()].sort((a,b)=>a.no-b.no);const N=Math.max(...qs.map(q=>q.total),...qs.map(q=>q.no));const done=qs.filter(q=>q.pay);
+ const an=new Map(qs.map(q=>[q.no,plAnalyse(q)]));const hits=done.filter(q=>an.get(q.no)&&an.get(q.no).hit).length,withNe=done.filter(q=>an.get(q.no)&&an.get(q.no).ne.length).length;
+ const rot=qs.some(q=>q.designer===2);const X0=100,X1=1240,xs=n=>X0+(X1-X0)*(n+0.2)/(N+0.8);let b='';
+ b+=plText(70,44,`組別 ${g}　報酬設計　${done.length} 題${rot?'　兩人輪流出題':'　Player 1 出題'}　選到 Nash 均衡 ${hits} / ${withNe} 題（有純粹均衡的題目）`,{size:22});
+ b+=plText(70,72,'上：每題得分（點上的字＝出題者）　中：累積得分　下：兩人選的那一格是不是純粹策略 Nash 均衡',{size:14,fill:PL.MUTED});
+ b+=plLine(70,96,100,96,PL.BLUE,3)+plText(106,101,'P1',{size:13})+plLine(140,96,170,96,PL.ORANGE,3)+plText(176,101,'P2',{size:13});
+ const series=(vals,ys,lw)=>vals.length?`<polyline points="${vals.map(([n,v])=>`${xs(n)},${ys(v)}`).join(' ')}" stroke="${lw[0]}" stroke-width="${lw[1]}" fill="none"/>`+vals.map(([n,v])=>`<circle cx="${xs(n)}" cy="${ys(v)}" r="4.5" fill="${lw[0]}"/>`).join(''):'';
+ // per question
+ const A0=120,A1=320;const pv=done.flatMap(q=>[plPts(q,1),plPts(q,2)]).concat([0]);let lo=Math.min(...pv)-0.8,hi=Math.max(...pv)+1.2;const ya=v=>A1-(A1-A0)*(v-lo)/(hi-lo);
+ for(const v of plTicks(lo,hi,5)){b+=plLine(X0,ya(v),X1,ya(v),v===0?'#c5c8d0':'#f0f1f4',1);b+=plText(X0-10,ya(v),v,{size:12,anchor:'end',base:'central',fill:PL.MUTED})}
+ b+=series(done.map(q=>[q.no,plPts(q,1)]),ya,[PL.BLUE,3])+series(done.map(q=>[q.no,plPts(q,2)]),ya,[PL.ORANGE,2.2]);
+ for(const q of done)b+=plText(xs(q.no),ya(Math.max(plPts(q,1),plPts(q,2)))-12,'P'+q.designer,{size:12,anchor:'middle',fill:q.designer===1?PL.BLUE:PL.ORANGE});
+ b+=plVLabel(30,(A0+A1)/2,'這一題得分');
+ // cumulative
+ const B0=360,B1=530;const tv=done.flatMap(q=>q.tot).concat([0]);let lo2=Math.min(...tv),hi2=Math.max(1,...tv);const pad=Math.max(1,(hi2-lo2)*0.1);lo2-=pad;hi2+=pad;const yb=v=>B1-(B1-B0)*(v-lo2)/(hi2-lo2);
+ for(const v of plTicks(lo2,hi2,4)){b+=plLine(X0,yb(v),X1,yb(v),v===0?'#c5c8d0':'#f0f1f4',1);b+=plText(X0-10,yb(v),v,{size:12,anchor:'end',base:'central',fill:PL.MUTED})}
+ b+=series([[0,0],...done.map(q=>[q.no,q.tot[0]])],yb,[PL.BLUE,3])+series([[0,0],...done.map(q=>[q.no,q.tot[1]])],yb,[PL.ORANGE,2.2]);
+ if(done.length){const l=done[done.length-1];b+=plText(xs(l.no)+10,yb(l.tot[0]),`P1 ${l.tot[0]}`,{size:13,fill:PL.BLUE,base:'central'})+plText(xs(l.no)+10,yb(l.tot[1])+(l.tot[0]===l.tot[1]?16:0),`P2 ${l.tot[1]}`,{size:13,fill:PL.ORANGE,base:'central'})}
+ b+=plVLabel(30,(B0+B1)/2,'累積得分');
+ // Nash strip
+ const C0=575;b+=plText(26,C0+22,'Nash 均衡',{size:13,fill:PL.MUTED});
+ for(const q of qs){const a=an.get(q.no);
+  if(!a){b+=plText(xs(q.no),C0+22,'—',{size:16,anchor:'middle',fill:PL.GRAY});continue}
+  b+=a.ne.length?plText(xs(q.no),C0+22,a.hit?'✓':'✗',{size:22,anchor:'middle',fill:a.hit?PL.GREEN:PL.RED}):plText(xs(q.no),C0+22,'無',{size:16,anchor:'middle',fill:PL.GRAY});
+  b+=plText(xs(q.no),C0+48,plCell(q.row-1,q.col-1),{size:11,anchor:'middle',fill:PL.MUTED})}
+ b+=plLine(X0,C0+66,X1,C0+66,'#20222a',1);b+=plText(xs(0),C0+86,'開始',{size:12,anchor:'middle',fill:PL.MUTED});
+ for(let n=1;n<=N;n++)b+=plText(xs(n),C0+86,n,{size:12,anchor:'middle',fill:PL.MUTED});b+=plText((X0+X1)/2,C0+108,'題',{size:13,anchor:'middle',fill:PL.MUTED});
+ return plSvg(b)}
+function plNashCsv(games){const cols=['組別','題','出題者','填好的表','出題者選','回答者選','P1得分','P2得分','純粹Nash均衡（出題者列,回答者欄）','均衡個數','選到均衡','出題者是最佳回應','回答者是最佳回應'],rows=[];
+ for(const [g,qs] of games)for(const q of [...qs.values()].sort((a,b)=>a.no-b.no)){const a=plAnalyse(q);if(!a)continue;
+  rows.push([g,q.no,'P'+q.designer,plMtext(q.filled),String.fromCharCode(64+q.row),String.fromCharCode(64+q.col),plPts(q,1),plPts(q,2),
+   a.ne.map(([i,j])=>plCell(i,j)).join(' ')||'無',a.ne.length,a.ne.length?(a.hit?'是':'否'):'無均衡',a.dbr?'是':'否',a.rbr?'是':'否'])}
+ return {cols,rows}}
+
+// ----- the panel: pick a pair, see the charts, save PNG / the Nash table -----
+function plSaveSvg(svg,name){const img=new Image();const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml;charset=utf-8'}));
+ img.onload=()=>{const c=document.createElement('canvas');c.width=PL.W*2;c.height=PL.H*2;const x=c.getContext('2d');x.scale(2,2);x.drawImage(img,0,0);URL.revokeObjectURL(url);
+  c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.append(a);a.click();a.remove()},'image/png')};img.src=url}
+async function makePlots(sid,adm,series,btn){btn&&(btn.disabled=true);
+ try{const pay=series==='payoff',col=series==='color';const d=await rpc(pay?'live_payoff_export':col?'live_color_export':'live_session_export',{p_session:sid,p_admin:adm});
+  const games=pay?plLoadPayoff(d):col?plLoadColor(d):plLoadState(d);const base=`${d.code||sid.slice(0,8)}_${d.created_at}`;
+  const box=el('plotpanel'),list=el('plotlist'),sel=el('plotgroup');
+  el('plottitle').textContent=`製作 plot：${d.code||sid.slice(0,8)}（${pay?'報酬設計':col?'顏色協調':'真實狀態'}系列）`;
+  if(!games.size){list.replaceChildren(Object.assign(document.createElement('p'),{className:'muted',textContent:'這個場次還沒有資料。'}));sel.replaceChildren();box.classList.remove('hide');return}
+  const names=[...games.keys()];
+  sel.replaceChildren(...(series==='state'?[]:[new Option(`全部組別（${names.length} 組）`,'*')]),...names.map(g=>{const n=games.get(g).size;return new Option(`組別 ${g}（${n} ${series==='state'?'回合':'題'}）`,g)}));
+  const draw=()=>{const pick=sel.value,gs=pick==='*'?names:[pick],items=[];
+   for(const g of gs){const v=games.get(g);
+    if(series==='state')for(const r of [...v.values()].sort((a,b)=>a.no-b.no))items.push([plStateRound(r),`${base}_${g}_r${r.no}.png`,`組別 ${g}　Round ${r.no}`]);
+    else items.push([col?plColorGroup(g,v):plPayoffGroup(g,v),`${base}_${g}_${col?'color':'payoff'}.png`,`組別 ${g}`])}
+   list.replaceChildren(...items.map(([svg,name,label])=>{const fig=document.createElement('figure');fig.className='plotfig';
+    const cap=document.createElement('figcaption');const s=document.createElement('span');s.textContent=label;const b=document.createElement('button');b.type='button';b.textContent='下載 PNG';b.onclick=()=>plSaveSvg(svg,name);cap.append(s,b);
+    const w=document.createElement('div');w.className='plotsvg';w.innerHTML=svg;fig.append(cap,w);return fig}));
+   el('plotall').onclick=async()=>{for(const [svg,name] of items){plSaveSvg(svg,name);await new Promise(r=>setTimeout(r,500))}}};
+  sel.onchange=draw;sel.value=series==='state'?names[0]:'*';draw();
+  el('plotnash').classList.toggle('hide',!pay);
+  if(pay)el('plotnash').onclick=()=>{const t=plNashCsv(games);const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([toCsv(t)],{type:'text/csv;charset=utf-8'}));a.download=`${base}_nash.csv`;document.body.append(a);a.click();a.remove()};
+  box.classList.remove('hide');box.scrollTop=0;
+ }catch(e){msg(e.message==='Access denied'?'沒有權限讀這個場次的資料。':e.message)}finally{btn&&(btn.disabled=false)}}
+el('plotclose').onclick=()=>el('plotpanel').classList.add('hide');
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!el('plotpanel').classList.contains('hide'))el('plotpanel').classList.add('hide')});
+
 // ---------- experimenter monitor ----------
 const statusName={matching:'等待配對',waiting:'準備中',ready:'閱讀規則',playing:'進行中',stopped:'已停止',abandoned:'已離開',expired:'等待逾時'};
 async function monitor(sid,adm){
@@ -379,6 +587,7 @@ async function monitor(sid,adm){
   el('closeSession').disabled=v.status!=='open';msg('');
  }catch(e){msg(e.message)}}
  el('exportBtn').onclick=()=>exportSession(sid,adm,undefined,undefined,monSeries);
+ el('plotBtn').onclick=()=>makePlots(sid,adm,monSeries,el('plotBtn'));
  el('closeSession').onclick=async()=>{try{await rpc('live_session_close',{p_session:sid,p_admin:adm,p_stop_games:false});await poll()}catch(e){msg(e.message)}};
  let armed=null;el('stopSession').onclick=async()=>{const b=el('stopSession');
   if(!armed){b.textContent='再按一次確認停止全部';b.classList.add('armed');armed=setTimeout(()=>{armed=null;b.textContent='停止所有組並關閉場次';b.classList.remove('armed')},3000);return;}
