@@ -501,11 +501,14 @@ function plLoadColor(d){const games=new Map();
 function plColorGroup(g,qs){qs=[...qs.values()].sort((a,b)=>a.no-b.no);const N=Math.max(...qs.map(q=>q.total),...qs.map(q=>q.no)),k=Math.max(...qs.map(q=>q.colors.length));
  const X0=100,X1=1240,xs=n=>X0+(X1-X0)*(n-0.4)/(N+0.2),cw=Math.min(90,(X1-X0)/(N+0.2)*0.76);const done=qs.filter(q=>q.pick[2]);const m=done.filter(q=>q.match).length;let b='';
  b+=plText(70,44,`組別 ${g}　顏色協調　${done.length} 題中選到同一個顏色 ${m} 題`,{size:24});
- b+=plText(70,74,`上：每題兩人選的顏色（✓＝選到一樣）　中：累積選到一樣的比例（虛線＝兩人隨便選的機率 1/${k}）　下：花的時間`,{size:14,fill:PL.MUTED});
+ b+=plText(70,74,`上：每題兩人選的顏色（✓＝選到一樣），最下面一列小色塊＝這題的顏色組合　中：累積選到一樣的比例（虛線＝隨便選的機率 1/${k}）　下：花的時間`,{size:14,fill:PL.MUTED});
  const A0=110,rh=48;b+=plText(X0-14,A0+rh*0.5+20,'P1',{size:14,anchor:'end',base:'central'})+plText(X0-14,A0+rh*1.5+28,'P2',{size:14,anchor:'end',base:'central'});
  for(const q of qs){const x=xs(q.no)-cw/2;
   if(q.pick[1])b+=plRect(x,A0+20,cw,rh,q.pick[1],'stroke="#9aa4b2"');if(q.pick[2])b+=plRect(x,A0+rh+28,cw,rh,q.pick[2],'stroke="#9aa4b2"');
-  if(q.pick[2])b+=plText(xs(q.no),A0+12,q.match?'✓':'✗',{size:17,anchor:'middle',fill:q.match?PL.GREEN:PL.RED})}
+  if(q.pick[2])b+=plText(xs(q.no),A0+12,q.match?'✓':'✗',{size:17,anchor:'middle',fill:q.match?PL.GREEN:PL.RED});
+  // this question's colours (the experimenter's order), as a small strip under the two choices
+  const n=q.colors.length||1,g2=3,sw=(cw-g2*(n-1))/n;q.colors.forEach((c,j)=>{b+=plRect(x+j*(sw+g2),A0+rh*2+40,sw,20,c,'stroke="#c5c8d0"')})}
+ b+=plText(X0-14,A0+rh*2+50,'題目',{size:12,anchor:'end',base:'central',fill:PL.MUTED});
  const B0=300,B1=480,ys=v=>B1-(B1-B0)*v;b+=plVLabel(30,(B0+B1)/2,'選到一樣的比例');
  for(const v of [0,0.2,0.4,0.6,0.8,1]){b+=plLine(X0,ys(v),X1,ys(v),'#f0f1f4',1);b+=plText(X0-10,ys(v),v.toFixed(1),{size:12,anchor:'end',base:'central',fill:PL.MUTED})}
  b+=plLine(X0,ys(1/k),X1,ys(1/k),PL.GRAY,1.5,'6 5');
